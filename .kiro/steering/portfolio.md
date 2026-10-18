@@ -14,9 +14,9 @@ decisions that span them.
 | **ENCAP** (Enterprise Agent Platform) | TBD | The runtime: synthesis to OKF, document index, operating model, agents, personnel console | TypeScript monorepo (`@encap/*`) | Owns runtime and governance |
 | **Knowledge base (pokb, working name)** | TBD | The corpus and knowledge graph: registered public sources, OKF bundles per echelon, ontology-guided extraction, RDF graph, context graph | Python 3.12, Oxigraph, pySHACL | Data and build pipeline; consumed one-directionally |
 | **ENSIM** | [semanticarchitectures/ENSIM](https://github.com/semanticarchitectures/ENSIM) | The test enterprise: org-doctrine model, doctrine processes, missions, role-emulating T&E agents | npm/TypeScript + Java | Read as a pinned snapshot, for evaluation only |
-| **Turnpoint** | [semanticarchitectures/turnpoint](https://github.com/semanticarchitectures/turnpoint) | Domain tool agents call over MCP; the pattern for agents-first tool design | Python | Called, never embedded |
+| **Turnpoint** | [semanticarchitectures/turnpoint](https://github.com/semanticarchitectures/turnpoint) | Domain tool agents call over MCP; the pattern for agents-first tool design. Mid horizon: planning for unmanned aircraft. Far horizon: the software between unmanned mission plans and the AOC (goal revision pending, see vision open questions) | Python | Called, never embedded |
 | **Aircrew-LangChain** (Airdrop Alpha, LangGraph) | [semanticarchitectures/Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) | First LangGraph host for decision-trace capture | Python, LangGraph | Consumer of KB tools |
-| **AOC-DFO** | TBD | BFO/CCO ontology of AOC data flows; the alignment target for the KB ontology | OWL | Reference ontology; imported, not modified |
+| **AOC-DFO** | TBD | BFO/CCO ontology of AOC data flows; the alignment target for the KB ontology. Far horizon: models the AOC side of the unmanned-to-AOC interface | OWL | Reference ontology; imported, not modified |
 
 Repos marked TBD: add the URL here when it exists. Do not guess.
 

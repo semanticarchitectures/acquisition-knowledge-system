@@ -1,9 +1,14 @@
 # Acquisition Knowledge System (AKS)
 
-Umbrella repo for a family of projects that give an Air Force acquisition organization
-citation-grounded AI agents over a layered public corpus, backed by a knowledge graph and a context
-graph of the organization's structure, mission, relationships, resources and operations.
-The first tenant is the Mission Planning program office (PAE C3BM).
+**Goal:** show, end to end and with evidence, that AI can speed up how the Air Force conceives,
+acquires, fields and operates capability, while staying safe, secure and reliable under human
+authority. AKS is first a capability demonstration. See [docs/vision.md](docs/vision.md).
+
+The near horizon gives an Air Force acquisition organization citation-grounded AI agents over a
+layered public corpus, backed by a knowledge graph and a context graph of the organization's
+structure, mission, relationships, resources and operations. The first tenant is the Mission Planning
+program office (PAE C3BM). Later horizons extend the same shared model to mission planning for
+unmanned aircraft and to organizing autonomous operations with the Air Operations Center.
 
 This repo holds **intent, architecture, cross-cutting specs and decisions**. It holds no component
 code. Code lives in the component repos.
@@ -36,12 +41,14 @@ Start with [docs/specs-index.md](docs/specs-index.md).
 
 ## Start here
 
-1. [Reference architecture](docs/architecture/reference-architecture.md)
-2. [KB prototype architecture](docs/architecture/kb-prototype-architecture.md)
-3. [Spec: knowledge-base-prototype](.kiro/specs/knowledge-base-prototype/requirements.md)
-4. Open decisions: [ADR 0002](docs/adr/0002-rdf-graph-store-oxigraph.md),
+1. [Vision and goal](docs/vision.md)
+2. [Reference architecture](docs/architecture/reference-architecture.md)
+3. [KB prototype architecture](docs/architecture/kb-prototype-architecture.md)
+4. [Spec: knowledge-base-prototype](.kiro/specs/knowledge-base-prototype/requirements.md)
+5. Open decisions: [ADR 0002](docs/adr/0002-rdf-graph-store-oxigraph.md),
    [0003](docs/adr/0003-authority-split-okf-and-graph.md),
-   [0004](docs/adr/0004-where-the-kb-mcp-server-runs.md)
+   [0004](docs/adr/0004-where-the-kb-mcp-server-runs.md),
+   [0005](docs/adr/0005-one-model-many-apps.md)
 
 ## Boundary
 

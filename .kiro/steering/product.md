@@ -4,7 +4,28 @@ inclusion: always
 
 # Product: Acquisition Knowledge System (AKS)
 
-## What it is
+## Goal
+
+**Show, end to end and with evidence, that AI can speed up how the Air Force conceives, acquires,
+fields and operates capability, while staying safe, secure and reliable under human authority.**
+
+AKS is first a **capability demonstration**. Judge every design choice by whether it produces
+evidence a skeptical reviewer can inspect: citations, decision traces, test results, evaluation
+scores. Full statement: [docs/vision.md](../../docs/vision.md).
+
+## Horizons
+
+| Horizon | Focus |
+| --- | --- |
+| Near (active) | AI-assisted capability acquisition in the Air Force acquisition system; Mission Planning program office (PAE C3BM) |
+| Mid | Mission planning for unmanned aircraft (Turnpoint), agents acting inside granted authority |
+| Far | Organizing autonomous operations at scale: the interface between unmanned mission plans and operations and the AOC |
+
+One vision across the strategic, operational and tactical levels and the capability lifecycle is
+realized as **one shared model, many apps** (ADR 0005), not one application. Build the near horizon;
+let the mid and far horizons shape design choices now without building them yet.
+
+## What it is today
 
 AKS composes a family of existing projects into one capability. It gives an Air Force acquisition
 organization citation-grounded AI agents over a layered public corpus, and a knowledge graph and
@@ -24,6 +45,14 @@ repo holds the shared product intent, architecture, cross-cutting specs and deci
 | AI Facilitator Teams (embedded engineer/PM pairs) | A reusable way to stand up the capability in a new program office |
 | AI agents (ENCAP agents, LangGraph agents, Claude) | Typed, scoped, cited access to the knowledge graph through MCP |
 | Reviewers and governance | Review queues, decision traces and audit of every answer |
+
+## Properties the demonstration must show
+
+Safe (AI never exceeds granted authority; humans decide), secure (no unreviewed boundary crossing;
+scoped access), reliable (cited, checked, regression-tested; gaps declared), and traceable (every
+decision replayable). See the table in [docs/vision.md](../../docs/vision.md).
+
+AI-accelerated, human-decided: "AI-driven" never means AI holds acquisition or use-of-force authority.
 
 ## Principles (from the reference architecture)
 
