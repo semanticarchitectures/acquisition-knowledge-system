@@ -17,4 +17,4 @@ Statuses: Draft, Requirements approved, Design approved, In progress, Done, Move
 | [0002](adr/0002-rdf-graph-store-oxigraph.md) | Embedded RDF store (Oxigraph) | Proposed |
 | [0003](adr/0003-authority-split-okf-and-graph.md) | OKF for documents; RDF graph for entities, claims, traces | Proposed |
 | [0004](adr/0004-where-the-kb-mcp-server-runs.md) | Where the KB MCP server runs | Proposed |
-| [0005](adr/0005-one-model-many-apps.md) | One shared model, many apps | Proposed |
+| [0005](adr/0005-one-model-many-apps.md) | One shared model, many apps | Accepted |

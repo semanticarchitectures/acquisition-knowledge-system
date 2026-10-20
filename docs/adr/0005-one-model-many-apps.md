@@ -1,6 +1,6 @@
 # 0005. One shared model, many apps: how the single vision is realized
 
-- Status: Proposed
+- Status: Accepted (2026-10-20)
 - Date: 2026-10-18
 - Related: [docs/vision.md](../vision.md)
 

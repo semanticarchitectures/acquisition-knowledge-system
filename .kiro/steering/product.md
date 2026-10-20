@@ -22,7 +22,7 @@ scores. Full statement: [docs/vision.md](../../docs/vision.md).
 | Far | Organizing autonomous operations at scale: the interface between unmanned mission plans and operations and the AOC |
 
 One vision across the strategic, operational and tactical levels and the capability lifecycle is
-realized as **one shared model, many apps** (ADR 0005), not one application. Build the near horizon;
+realized as **one shared model, many apps** (ADR 0005, Accepted), not one application. Build the near horizon;
 let the mid and far horizons shape design choices now without building them yet.
 
 ## What it is today
