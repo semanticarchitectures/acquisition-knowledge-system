@@ -15,6 +15,15 @@ Loaded when working on ontology, shape or SPARQL files, and on any spec that cha
 3. **Shapes:** one SHACL shape per class and per n-ary relation. Shapes gate extraction, validate
    commits and generate the extractor's JSON schema.
 
+## Pinned versions (shared by every project ontology, ADR 0006)
+
+| Ontology | Pinned release | Used by |
+| --- | --- | --- |
+| BFO 2020 | TBD (select before Phase 0 scaffolding) | KB ontology, AOC-DFO, GMNS |
+| CCO | TBD (current release; select before Phase 0 scaffolding) | KB ontology, AOC-DFO, GMNS |
+
+Change a pin here first, then in each component. Never change a pin in one component alone.
+
 ## Alignment
 
 - Align with **AOC-DFO** so the two graphs join without remapping.
