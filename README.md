@@ -22,7 +22,7 @@ code. Code lives in the component repos.
 | ENSIM | Test enterprise for evaluation | [ENSIM](https://github.com/semanticarchitectures/ENSIM) |
 | Turnpoint | Mission planning tool agents call over MCP | [turnpoint](https://github.com/semanticarchitectures/turnpoint) |
 | Aircrew-LangChain | LangGraph agents; first decision-trace host | [Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) |
-| AOC-DFO | Reference ontology for alignment | TBD |
+| AOC-DFO | Reference ontology for alignment; AOC side of the far-horizon interface | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo) |
 
 Dependency rules: [.kiro/steering/portfolio.md](.kiro/steering/portfolio.md).
 
