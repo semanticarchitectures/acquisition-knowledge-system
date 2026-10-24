@@ -6,7 +6,7 @@
 | [kb-mcp-contract](../.kiro/specs/kb-mcp-contract/requirements.md) | One MCP contract for every KB consumer | Knowledge base, ENCAP | Draft |
 | [decision-traces](../.kiro/specs/decision-traces/requirements.md) | Context graph: decision trace schema and capture paths | Knowledge base, Aircrew-LangChain, ENSIM | Draft |
 | [ensim-acquisition-missions](../.kiro/specs/ensim-acquisition-missions/requirements.md) | Acquisition mission set for evaluation | ENSIM | Draft (requirements only) |
-| [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo/tree/main/.kiro/specs/aoc-dfo) (in component repo) | AOC data flow ontology, mission-thread layer, KB alignment target | AOC-DFO | Draft v1.1 (Amendment 001, 2026-10-22); Phase 0 scaffolding done |
+| [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo/tree/main/.kiro/specs/aoc-dfo) (in component repo) | AOC data flow ontology, mission-thread layer, KB alignment target | AOC-DFO | Requirements approved (v1.1, 2026-10-24); Phase 0 scaffolding done |
 
 Statuses: Draft, Requirements approved, Design approved, In progress, Done, Moved (with link).
 
