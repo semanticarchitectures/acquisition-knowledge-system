@@ -13,19 +13,47 @@ unmanned aircraft and to organizing autonomous operations with the Air Operation
 This repo holds **intent, architecture, cross-cutting specs and decisions**. It holds no component
 code. Code lives in the component repos.
 
+## How the pieces fit
+
+The single vision is realized as **one shared model, many apps** ([ADR 0005](docs/adr/0005-one-model-many-apps.md)):
+one ontology, knowledge graph and decision-trace record (BFO 2020 and CCO 2.2, pinned once for every
+component), with purpose-built apps and agents on top. One demonstration thread runs through them:
+
+1. **Concept:** a need appears (the AOC cannot handle many times more unmanned missions).
+2. **Acquisition:** agents grounded in the knowledge base trace it to authorities; each decision is
+   recorded as a trace (KB, ENCAP, ENSIM).
+3. **Development:** the capability is built in Turnpoint, spec-driven with AI assistance.
+4. **Operations:** Turnpoint plans unmanned missions and hands them to the AOC (AOC-DFO) as UCI
+   messages over a degraded network (GMNS); agents fly them in simulation (Aircrew-LangChain, ENSIM).
+5. **Feedback:** results return to the graph as evidence against the original requirement.
+
 ## Components
 
-| Component | Role | Repo |
-| --- | --- | --- |
-| ENCAP | Runtime: synthesis, index, operating model, agents, console | TBD |
-| Knowledge base (`pokb`, working name) | Corpus and knowledge/context graph | TBD |
-| ENSIM | Test enterprise for evaluation | [ENSIM](https://github.com/semanticarchitectures/ENSIM) |
-| Turnpoint | Mission planning tool agents call over MCP | [turnpoint](https://github.com/semanticarchitectures/turnpoint) |
-| Aircrew-LangChain | LangGraph agents; first decision-trace host | [Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) |
-| GMNS | Network transport and C2 messaging testbed (UCI, planned C2SIM) | [GlobalMobileNetworkSim](https://github.com/semanticarchitectures/GlobalMobileNetworkSim) |
-| AOC-DFO | Reference ontology for alignment; AOC side of the far-horizon interface | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo) |
+| Component | Role | Status (2026-10-25) | Repo |
+| --- | --- | --- | --- |
+| Knowledge base (`pokb`, working name) | Corpus and knowledge/context graph | Spec only; critical path | TBD |
+| ENCAP | Runtime: synthesis, index, operating model, agents, console | Not linked yet | TBD |
+| AOC-DFO | AOC data-flow ontology; KB alignment target; AOC side of the far-horizon interface | Requirements approved; Phase 0 done | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo) |
+| ENSIM | Test enterprise for evaluation | Missions 1–3 modeled; Mission 1 runs | [ENSIM](https://github.com/semanticarchitectures/ENSIM) |
+| Aircrew-LangChain | LangGraph agents; first decision-trace host | Baseline done; Phase 1 next | [Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) |
+| Turnpoint | Mission planning tool agents call over MCP; unmanned planning next | Phases 1–3 done | [turnpoint](https://github.com/semanticarchitectures/turnpoint) |
+| GMNS | Network transport and C2 messaging testbed (UCI, planned C2SIM) | MATLAB; Python port spec not yet committed | [GlobalMobileNetworkSim](https://github.com/semanticarchitectures/GlobalMobileNetworkSim) |
 
 Dependency rules: [.kiro/steering/portfolio.md](.kiro/steering/portfolio.md).
+
+## Milestones
+
+Six demonstration milestones, each gated by component milestones. Dates are proposed. Full plan,
+timeline and dependencies: [docs/integrated-plan.md](docs/integrated-plan.md).
+
+| ID | Milestone | Proposed |
+| --- | --- | --- |
+| D0 | Foundations aligned | Nov 2026 |
+| D1 | Grounded acquisition answers | Feb 2027 |
+| D2 | Decisions on the record | Apr 2027 |
+| D3 | Acquisition thread end to end (near horizon complete) | Jun 2027 |
+| D4 | Plan to AOC over a degraded network | Dec 2027 |
+| D5 | Closed loop | First half of 2028 |
 
 ## How this repo works
 
@@ -43,13 +71,14 @@ Start with [docs/specs-index.md](docs/specs-index.md).
 ## Start here
 
 1. [Vision and goal](docs/vision.md)
-2. [Reference architecture](docs/architecture/reference-architecture.md)
-3. [KB prototype architecture](docs/architecture/kb-prototype-architecture.md)
-4. [Spec: knowledge-base-prototype](.kiro/specs/knowledge-base-prototype/requirements.md)
-5. Open decisions: [ADR 0002](docs/adr/0002-rdf-graph-store-oxigraph.md),
+2. [Integrated milestone plan](docs/integrated-plan.md)
+3. [Reference architecture](docs/architecture/reference-architecture.md)
+4. [KB prototype architecture](docs/architecture/kb-prototype-architecture.md)
+5. [Spec: knowledge-base-prototype](.kiro/specs/knowledge-base-prototype/requirements.md)
+6. Open decisions (needed for D0): [ADR 0002](docs/adr/0002-rdf-graph-store-oxigraph.md),
    [0003](docs/adr/0003-authority-split-okf-and-graph.md),
    [0004](docs/adr/0004-where-the-kb-mcp-server-runs.md),
-   [0005](docs/adr/0005-one-model-many-apps.md)
+   [0008](docs/adr/0008-separate-repos-and-shared-packages.md)
 
 ## Boundary
 
