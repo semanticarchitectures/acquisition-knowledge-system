@@ -32,7 +32,7 @@ component), with purpose-built apps and agents on top. One demonstration thread 
 | Component | Role | Status (2026-10-25) | Repo |
 | --- | --- | --- | --- |
 | Knowledge base (`pokb`, working name) | Corpus and knowledge/context graph | Spec only; critical path | TBD |
-| ENCAP | Runtime: synthesis, index, operating model, agents, console | Not linked yet | TBD |
+| ENCAP | Runtime: synthesis, index, operating model, agents, console | OKF format and synthesis agent built; Phase 2 gate in progress | [encap](https://github.com/semanticarchitectures/encap) |
 | AOC-DFO | AOC data-flow ontology; KB alignment target; AOC side of the far-horizon interface | Requirements approved; Phase 0 done | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo) |
 | ENSIM | Test enterprise for evaluation | Missions 1–3 modeled; Mission 1 runs | [ENSIM](https://github.com/semanticarchitectures/ENSIM) |
 | Aircrew-LangChain | LangGraph agents; first decision-trace host | Baseline done; Phase 1 next | [Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) |

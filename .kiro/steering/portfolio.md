@@ -11,7 +11,7 @@ decisions that span them.
 
 | Component | Repo | Role in AKS | Stack | Boundary |
 | --- | --- | --- | --- | --- |
-| **ENCAP** (Enterprise Agent Platform) | TBD | The runtime: synthesis to OKF, document index, operating model, agents, personnel console | TypeScript monorepo (`@encap/*`) | Owns runtime and governance |
+| **ENCAP** (Enterprise Agent Platform) | [semanticarchitectures/encap](https://github.com/semanticarchitectures/encap) | The runtime: synthesis to OKF, document index, operating model, agents, personnel console | TypeScript monorepo (`@encap/*`) | Owns runtime and governance |
 | **Knowledge base (pokb, working name)** | TBD | The corpus and knowledge graph: registered public sources, OKF bundles per echelon, ontology-guided extraction, RDF graph, context graph | Python 3.12, Oxigraph, pySHACL | Data and build pipeline; consumed one-directionally |
 | **ENSIM** | [semanticarchitectures/ENSIM](https://github.com/semanticarchitectures/ENSIM) | The test enterprise: org-doctrine model, doctrine processes, missions, role-emulating T&E agents | npm/TypeScript + Java | Read as a pinned snapshot, for evaluation only |
 | **Turnpoint** | [semanticarchitectures/turnpoint](https://github.com/semanticarchitectures/turnpoint) | Domain tool agents call over MCP; the pattern for agents-first tool design. Mid horizon: planning for unmanned aircraft. Far horizon: the software between unmanned mission plans and the AOC (goal revision pending, see vision open questions) | Python | Called, never embedded |
