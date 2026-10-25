@@ -40,7 +40,7 @@ all nodes in the same graph, linked by cited relationships.
 | Concept and requirements | Enterprise needs and policy (KB L0–L2, ENSIM enterprise) | Mission needs at the AOC (AOC-DFO) | Not applicable |
 | Acquisition and development | Portfolio and funding decisions (KB L3, decision traces) | Program office execution (KB L4, ENCAP agents) | Software built against traced requirements (spec-driven development) |
 | Production and fielding | Fielding decisions | Integration with the AOC (AOC-DFO interface) | Released planning software (Turnpoint) |
-| Operations and feedback | Lessons into policy and portfolio | Unmanned mission tasking and deconfliction with the AOC | Mission plans executed in simulation (Aircrew-LangChain, ENSIM) |
+| Operations and feedback | Lessons into policy and portfolio | Unmanned mission tasking and deconfliction with the AOC; C2 traffic under degraded comms (GMNS) | Mission plans executed in simulation (Aircrew-LangChain, ENSIM) |
 
 ## The demonstration thread
 
@@ -54,7 +54,8 @@ Across all three horizons, one story runs through every component:
 3. **Development.** The capability is built: an unmanned planning feature in Turnpoint, developed
    spec-driven with AI assistance, each task traced to a requirement.
 4. **Operations.** Turnpoint plans unmanned missions and passes them to the AOC through an interface
-   modeled with AOC-DFO. Agents fly the missions in simulation.
+   modeled with AOC-DFO, as real UCI messages carried over a simulated, degraded network (GMNS).
+   Agents fly the missions in simulation.
 5. **Feedback.** Mission results return to the graph as evidence against the original requirement,
    which closes the loop.
 

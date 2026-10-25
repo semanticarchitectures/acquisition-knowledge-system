@@ -16,6 +16,7 @@ decisions that span them.
 | **ENSIM** | [semanticarchitectures/ENSIM](https://github.com/semanticarchitectures/ENSIM) | The test enterprise: org-doctrine model, doctrine processes, missions, role-emulating T&E agents | npm/TypeScript + Java | Read as a pinned snapshot, for evaluation only |
 | **Turnpoint** | [semanticarchitectures/turnpoint](https://github.com/semanticarchitectures/turnpoint) | Domain tool agents call over MCP; the pattern for agents-first tool design. Mid horizon: planning for unmanned aircraft. Far horizon: the software between unmanned mission plans and the AOC (goal revision pending, see vision open questions) | Python | Called, never embedded |
 | **Aircrew-LangChain** (Airdrop Alpha, LangGraph) | [semanticarchitectures/Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) | First LangGraph host for decision-trace capture | Python, LangGraph | Consumer of KB tools |
+| **GMNS** (GlobalMobileNetworkSim) | [semanticarchitectures/GlobalMobileNetworkSim](https://github.com/semanticarchitectures/GlobalMobileNetworkSim) | Network transport and standards-conformant C2 messaging testbed (ADR 0007): simulated fiber, GEO, LEO and line-of-sight links with outages; emulated mission systems exchanging real UCI messages; planned SISO C2SIM gateway. Far horizon: carries unmanned-to-AOC traffic under degraded comms | Python port (MATLAB baseline frozen for comparison) | Runs as its own simulation; reached over MCP or C2SIM, never embedded |
 | **AOC-DFO** | [semanticarchitectures/aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo) (standalone, ADR 0006) | BFO/CCO ontology of AOC data flows; the alignment target for the KB ontology. Far horizon: models the AOC side of the unmanned-to-AOC interface | OWL | Reference ontology; imported, not modified |
 
 Repos marked TBD: add the URL here when it exists. Do not guess.
@@ -29,10 +30,12 @@ flowchart LR
   ENCAP -->|calls over MCP| TP[Turnpoint]
   AL[Aircrew-LangChain] -->|KB tools over MCP| KB
   KB -.->|aligns to| AOC[AOC-DFO ontology]
+  TP -.->|planned: UCI traffic over| GMNS[GMNS<br/>network + C2 messaging]
+  GMNS -.->|UCI mapping aligns to| AOC
 ```
 
-Arrows point from consumer to dependency. Nothing flows back into the corpus, Turnpoint or ENSIM,
-so each stays releasable on its own.
+Solid arrows point from consumer to dependency. Dashed arrows are alignment or planned links.
+Nothing flows back into the corpus, Turnpoint, ENSIM or GMNS, so each stays releasable on its own.
 
 ## Rules for agents working in this repo
 

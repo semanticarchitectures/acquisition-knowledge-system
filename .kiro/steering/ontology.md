@@ -52,6 +52,8 @@ Notes on the current pins:
 ## Alignment
 
 - Align with **AOC-DFO** so the two graphs join without remapping.
+- **GMNS's UCI-to-CCO mapping** uses AOC-DFO's message classes (InformationArtifactType and its
+  subclasses) rather than its own, so one message is modeled one way (ADR 0007).
 - Reuse **ENSIM's org-doctrine schema** names where they exist (Organization, Role, C2Node,
   DoctrineProcess, Decision), so the real enterprise and the simulated one are described alike and
   evaluation compares like with like. Record any divergence in an ADR.

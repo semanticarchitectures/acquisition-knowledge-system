@@ -1,6 +1,7 @@
 # 0006. AOC-DFO gets its own repo; all project ontologies share one BFO/CCO pin
 
-- Status: Accepted (2026-10-22)
+- Status: Accepted (2026-10-22); rationale amended by ADR 0007 (2026-10-25): GMNS is now an AKS
+  component, and the repository model is decided by ADR 0008
 - Date: 2026-10-22
 - Resolves: AOC-DFO open decisions OD-2 (repository home) and OD-3 (CCO version pin)
 - Related: ADR 0001, ADR 0005

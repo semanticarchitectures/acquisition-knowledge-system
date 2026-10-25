@@ -19,4 +19,6 @@ Statuses: Draft, Requirements approved, Design approved, In progress, Done, Move
 | [0003](adr/0003-authority-split-okf-and-graph.md) | OKF for documents; RDF graph for entities, claims, traces | Proposed |
 | [0004](adr/0004-where-the-kb-mcp-server-runs.md) | Where the KB MCP server runs | Proposed |
 | [0005](adr/0005-one-model-many-apps.md) | One shared model, many apps | Accepted |
-| [0006](adr/0006-aoc-dfo-repo-and-shared-ontology-pins.md) | AOC-DFO standalone repo; one shared BFO/CCO pin | Accepted |
+| [0006](adr/0006-aoc-dfo-repo-and-shared-ontology-pins.md) | AOC-DFO standalone repo; one shared BFO/CCO pin | Accepted (rationale amended by 0007) |
+| [0007](adr/0007-gmns-joins-aks.md) | GMNS joins AKS as network transport and C2 messaging testbed | Accepted |
+| [0008](adr/0008-separate-repos-and-shared-packages.md) | Separate repos plus shared packages, or a monorepo | Proposed |
