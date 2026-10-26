@@ -19,7 +19,7 @@ coding agents across several repos in parallel, the same basis as Turnpoint's es
 
 | ID | Name | Proposed date | What it demonstrates | Gated by |
 | --- | --- | --- | --- | --- |
-| **D0** | Foundations aligned | 2026-11-30 | Every component follows the shared model and pins; open architecture decisions closed | ADRs 0002–0004 and 0008 decided; KB repo exists; KB/ENCAP index and access-control overlap resolved; component repos link the umbrella; Turnpoint goal revised for unmanned planning |
+| **D0** | Foundations aligned | 2026-11-30 | Every component follows the shared model and pins; open architecture decisions closed | ADRs 0002–0004 and 0008 decided; KB repo exists; KB/ENCAP overlap resolved (ADR 0009); component repos link the umbrella; Turnpoint goal revised for unmanned planning |
 | **D1** | Grounded acquisition answers | 2027-02-15 | **Reliable, secure:** cited answers about the Mission Planning program office; scope limits enforced; gaps declared | KB Phase 2 gate (8 of 10 CQs, precision ≥ 0.90); KB MCP read tools; AOC-DFO v1.0 doctrine layer for alignment |
 | **D2** | Decisions on the record | 2027-04-30 | **Safe, traceable:** agents act only within granted authority; every decision is a replayable trace | KB Phase 3 gate (CQ9, CQ10); Aircrew-LangChain Phase 2 (authorization) with the record-then-commit hook; ENSIM acquisition missions producing synthetic decisions |
 | **D3** | Acquisition thread end to end | 2027-06-30 | **Near horizon complete:** demonstration thread steps 1–2, graph vs vector evidence, CUI pilot go/no-go | KB Phase 4 (evaluation report, Foundry export); ENCAP Phases 3–5 (operating model, index, access control) and KB integration; AOC-DFO mission-thread layer aligned with the KB ontology |
@@ -169,6 +169,6 @@ At this capacity, expect D4 to slip into 2028 unless a second person or more age
 
 ## Open questions
 
-- [ ] **Target date and audience.** Is there a date the demonstration must be ready for, and who must
-      it convince first? A fixed date would reorder the priorities above.
+- [ ] **Target date.** Is there a date the demonstration must be ready for? (Audience answered: Air Force
+      and contractor personnel.) A fixed date would reorder the priorities above.
 - [ ] **Capacity.** Is half time with AI coding agents the right assumption?

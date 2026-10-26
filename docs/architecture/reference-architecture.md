@@ -50,7 +50,7 @@ ENCAP is the only runtime; the other three repos are a data source, a called too
 
 ```mermaid
 flowchart LR
-  Corpus[Program office<br/>knowledge base] -->|corpus| ENCAP
+  ENCAP -->|reads corpus| Corpus[Program office<br/>knowledge base]
   ENCAP -->|MCP calls| Turnpoint
   ENCAP -->|evaluation reads<br/>pinned snapshot| ENSIM
   ENCAP -.->|adapter| Enclave[Foundry / Envision]

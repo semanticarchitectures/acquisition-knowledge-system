@@ -6,12 +6,34 @@
 
 ## Goal
 
-**Show, end to end and with evidence, that AI can speed up how the Air Force conceives, acquires,
-fields and operates capability, while staying safe, secure and reliable under human authority.**
+**Demonstrate how AI can architect and simulate Air Force enterprise operations, at scale and
+realistically, and build on that simulation to show how AI can be used in the enterprise: speeding
+how the Air Force conceives, acquires, fields and operates capability, while staying safe, secure and
+reliable under human authority.**
+
+The goal has two layers, in order (Kevin, 2026-10-26):
+
+1. **AI architects and simulates the enterprise.** A model of the Air Force enterprise (organizations,
+   doctrine, roles, processes, systems, data flows, networks) built from public sources with AI, and
+   run as a simulation that is realistic and works at scale (ENSIM, AOC-DFO, GMNS, Aircrew-LangChain).
+2. **AI is used in that enterprise.** Agents that work inside the simulated enterprise the way they
+   would inside the real one: grounded answers, recorded decisions, mission planning, operations
+   (KB, ENCAP, Turnpoint). The simulation is the stage on which AI in the enterprise is shown, and
+   the range on which it is tested before it touches anything real.
 
 AKS is first a **capability demonstration**. It succeeds when it produces convincing evidence, not
 when it is adopted. Every claim the demonstration makes must be backed by something a skeptical
 reviewer can inspect: a citation, a decision trace, a test result or an evaluation score.
+
+## Audience
+
+**Air Force and contractor personnel** (Kevin, 2026-10-26): people who know how the enterprise
+actually works and will judge the simulation against that knowledge. Two consequences:
+
+- **Realism is judged by practitioners.** The demonstration needs evidence that the simulation
+  matches how the enterprise operates, not only that it runs.
+- **Everything shown must stay public.** Contractor audiences can include people without access to
+  CUI, so the public-data boundary holds for every demonstration, not only for Phase 1.
 
 ## Horizons
 
@@ -73,6 +95,8 @@ reliability criteria come from the AFMC AI governance policy (v2).
 | **Secure** | Data never crosses a boundary without review. Every client sees only its scope | Classification markings, echelon scopes, scoped tokens, a reviewed promotion step |
 | **Reliable** | Answers are cited and checked. Gaps are declared, not filled in. Changes do not cause silent regressions | CQ golden tests, citation faithfulness checks, evaluation against ENSIM, pinned models and prompts |
 | **Traceable** (the means to all three) | Every decision, by person or agent, can be replayed: who, under what authority, using what | Decision traces, provenance, call logs |
+| **Realistic** (layer 1) | The simulated enterprise behaves the way practitioners know the real one does | Every model element traced to a public source or marked representative; comparison against documented operations (for example the Operation Damayan pattern behind ENSIM Mission 1); review by Air Force and contractor practitioners |
+| **At scale** (layer 1) | The simulation holds up as missions, agents and message volume grow | Concurrent missions, multiple agent instances per role, GMNS message volume under degraded links, with measured cost and fidelity at each step |
 
 ## Guardrails on the vision
 
@@ -99,7 +123,7 @@ reliability criteria come from the AFMC AI governance policy (v2).
 - [ ] **Turnpoint's goal.** Its current goal is FalconView parity, a workflow for manned aircrew.
       Planning unmanned missions at scale needs batch planning, deconfliction, autonomy envelopes and
       interfaces between machines. Should Turnpoint's goals be revised in its own repo?
-- [ ] **Demonstration audience.** Who must the demonstration convince first: program office leadership,
-      PEO C3BM, AFMC, or the AI governance community? The answer sets which evidence comes first.
+- [x] **Demonstration audience.** Air Force and contractor personnel (answered 2026-10-26; see
+      [Audience](#audience)).
 - [ ] **Unmanned scale target.** What multiple of today's mission volume should the far-horizon
       simulation demonstrate?

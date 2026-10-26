@@ -25,7 +25,7 @@ Repos marked TBD: add the URL here when it exists. Do not guess.
 
 ```mermaid
 flowchart LR
-  KB[Knowledge base<br/>corpus + graph] --> ENCAP
+  ENCAP -->|reads bundles, calls graph tools| KB[Knowledge base<br/>corpus + graph]
   ENCAP -->|evaluation harness reads<br/>pinned snapshot| ENSIM
   ENCAP -->|calls over MCP| TP[Turnpoint]
   AL[Aircrew-LangChain] -->|KB tools over MCP| KB

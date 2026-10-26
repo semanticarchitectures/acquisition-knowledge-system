@@ -6,8 +6,13 @@ inclusion: always
 
 ## Goal
 
-**Show, end to end and with evidence, that AI can speed up how the Air Force conceives, acquires,
-fields and operates capability, while staying safe, secure and reliable under human authority.**
+**Demonstrate how AI can architect and simulate Air Force enterprise operations, at scale and
+realistically, and build on that simulation to show how AI can be used in the enterprise, while
+staying safe, secure and reliable under human authority.**
+
+Two layers, in order: (1) AI architects and simulates the enterprise (ENSIM, AOC-DFO, GMNS,
+Aircrew-LangChain); (2) AI is used in that enterprise (KB, ENCAP, Turnpoint). Audience: Air Force and
+contractor personnel, who will judge realism against how the enterprise actually works.
 
 AKS is first a **capability demonstration**. Judge every design choice by whether it produces
 evidence a skeptical reviewer can inspect: citations, decision traces, test results, evaluation
