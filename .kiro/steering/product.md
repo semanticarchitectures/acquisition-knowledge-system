@@ -22,13 +22,14 @@ scores. Full statement: [docs/vision.md](../../docs/vision.md).
 
 | Horizon | Focus |
 | --- | --- |
-| Near (active) | AI-assisted capability acquisition in the Air Force acquisition system; Mission Planning program office (PAE C3BM) |
+| Near | AI-assisted capability acquisition in the Air Force acquisition system; Mission Planning program office (PAE C3BM) |
 | Mid | Mission planning for unmanned aircraft (Turnpoint), agents acting inside granted authority |
 | Far | Organizing autonomous operations at scale: the interface between unmanned mission plans and operations and the AOC |
 
 One vision across the strategic, operational and tactical levels and the capability lifecycle is
-realized as **one shared model, many apps** (ADR 0005, Accepted), not one application. Build the near horizon;
-let the mid and far horizons shape design choices now without building them yet.
+realized as **one shared model, many apps** (ADR 0005, Accepted), not one application. Active work follows the two-layer order in
+[docs/integrated-plan.md](../../docs/integrated-plan.md): simulate the enterprise first, then use AI in it.
+The horizons describe scope, not sequence.
 
 ## What it is today
 

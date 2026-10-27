@@ -44,17 +44,18 @@ Dependency rules: [.kiro/steering/portfolio.md](.kiro/steering/portfolio.md).
 
 ## Milestones
 
-Six demonstration milestones, each gated by component milestones. Dates are proposed. Full plan,
+Six demonstration milestones in the goal's order: simulation first, then AI used in the enterprise.
+Each is gated by component milestones. Dates are proposed. Full plan,
 timeline and dependencies: [docs/integrated-plan.md](docs/integrated-plan.md).
 
-| ID | Milestone | Proposed |
-| --- | --- | --- |
-| D0 | Foundations aligned | Nov 2026 |
-| D1 | Grounded acquisition answers | Feb 2027 |
-| D2 | Decisions on the record | Apr 2027 |
-| D3 | Acquisition thread end to end (near horizon complete) | Jun 2027 |
-| D4 | Plan to AOC over a degraded network | Dec 2027 |
-| D5 | Closed loop | First half of 2028 |
+| ID | Milestone | Layer | Proposed |
+| --- | --- | --- | --- |
+| D0 | Foundations aligned | | Nov 2026 |
+| D1 | The AI-built enterprise, running | 1: AI architects and simulates | Mar 2027 |
+| D2 | At scale, over a realistic network | 1: AI architects and simulates | Aug 2027 |
+| D3 | AI in the enterprise: grounded and on the record | 2: AI used in the enterprise | Dec 2027 |
+| D4 | AI in operations: plan to AOC over a degraded network | 2: AI used in the enterprise | May 2028 |
+| D5 | Closed loop | Both | Oct 2028 |
 
 ## How this repo works
 
