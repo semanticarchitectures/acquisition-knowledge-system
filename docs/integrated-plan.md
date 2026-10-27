@@ -1,6 +1,6 @@
 # Integrated milestone plan
 
-- Status: **Baselined 2026-10-26** (git tag `plan-baseline-2026-10-26`). Progress is tracked against
+- Status: **Baselined 2026-10-26** (commit `38ff131`; to tag it: `git tag plan-baseline-2026-10-26 38ff131`). Progress is tracked against
   this baseline in [progress.md](progress.md); the dates below are not edited as work moves.
 - As of: 2026-10-26 (re-sequenced to the two-layer goal)
 - Related: [vision](vision.md), [portfolio](../.kiro/steering/portfolio.md), [specs index](specs-index.md)

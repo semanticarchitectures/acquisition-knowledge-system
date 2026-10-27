@@ -1,6 +1,6 @@
 # Progress against the baseline
 
-- Baseline: [integrated plan](integrated-plan.md), git tag `plan-baseline-2026-10-26`
+- Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
 - Capacity: Kevin at half time, directing AI coding agents; working rule of at most three active streams
 - Updated: 2026-10-26
 
