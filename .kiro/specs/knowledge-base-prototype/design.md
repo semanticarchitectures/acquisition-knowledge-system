@@ -7,9 +7,13 @@
 
 ## Overview
 
-A Python package (`pokb`, working name) with idempotent pipeline stages, an embedded RDF store and
-passage index, and a query library that implements the KB MCP contract (spec `kb-mcp-contract`).
+A Python package (`pokb`, working name) with idempotent pipeline stages, an embedded RDF store, and
+a query library that implements the KB graph tools in the KB MCP contract (spec `kb-mcp-contract`).
 See the narrative for the full architecture diagram, ontology rationale and stack choices.
+
+Per ADR 0009, the KB has **no passage index and no policy store**. ENCAP indexes the KB's OKF bundles
+and owns the access model; the KB enforces the scope ENCAP decides on its own named graphs. The
+narrative's SQLite passage index is superseded by ENCAP's document graph.
 
 ## Architecture
 
@@ -21,9 +25,9 @@ flowchart LR
   ER -->|queue| RQ
   RQ -->|decisions| LOG[(review log)]
   LOG --> KG
-  N --> IDX[(SQLite FTS5 + vec)]
-  KG --> Q[query library] --> MCP[MCP tools]
-  IDX --> Q
+  N -->|OKF bundles| ENC[ENCAP document graph<br/>passage index, ADR 0009]
+  KG --> Q[query library] --> MCP[KB graph tools]
+  POL[ENCAP access model] -.->|scope per call| MCP
 ```
 
 Each stage reads and writes files keyed by content hash, so a re-run touches only what changed
@@ -41,9 +45,9 @@ Each stage reads and writes files keyed by content hash, so a re-run touches onl
 | `resolve` | Candidates, canonical registry | Resolved candidates or `ReviewItem` | R4 |
 | `validate.gate` | Resolved candidates, shapes | Committed claims or `ReviewItem` | R5 |
 | `store.graph` | Committed claims | Named graphs in Oxigraph | R5.3, R6, R7.1 |
-| `store.index` | OKF sections | FTS5 + vector index | R2 |
+| `scope` | Scope from ENCAP (or the dev policy file in ENCAP's format) | Allowed named-graph set for the call | R7.2–R7.5 |
 | `cq` | CQ ID, parameters, scope | Rows with claim IDs, or a gap | R8 |
-| `export` | Graph + index | Snapshot; Foundry datasets | R10 |
+| `export` | Graph + OKF bundles | Snapshot; Foundry datasets | R10 |
 
 ## Data models
 
@@ -90,8 +94,9 @@ Field values above are placeholders, not facts.
 | Decision traces | `kb:graph/traces/<origin>/<yyyy-mm>` (origin: agent, reviewer, synthetic, declared) |
 | Provenance | `kb:graph/prov` |
 
-Echelon scope is a property of each source-version graph in `kb:graph/prov`, which is how R7 is
-enforced at query time.
+Echelon scope is a property of each source-version graph in `kb:graph/prov`. At query time the
+`scope` component turns the ENCAP-issued scope into the set of named graphs the call may read, which
+is how R7 is enforced. The KB decides nothing about who may read what; it only enforces.
 
 ## Error handling
 
@@ -103,7 +108,8 @@ enforced at query time.
 | SHACL violation | Reject the candidate; log shape and focus node (R5.1) |
 | Ambiguous entity match | Queue for review; never auto-merge (R4.2) |
 | Superseded source | Mark graph superseded; flag unsupported facts (R6.2) |
-| Query outside scope | Omit silently (R7.3) |
+| Query outside scope | Omit silently (R7.4) |
+| Call with no scope | Refuse (R7.5) |
 | CQ with no answer | Return a gap object, logged to the gap backlog (R8.4) |
 
 ## Testing strategy
@@ -112,5 +118,8 @@ enforced at query time.
 - **CQ golden-answer tests:** one per CQ, against a fixture graph, in CI (R8.2).
 - **Extraction regression:** the gold set scored on every change to prompts, models or shapes (R11.1).
 - **Rebuild test:** delete the store, rebuild from OKF + registry + review log, compare (R10.3).
-- **Scope tests:** a client scoped to L2 never sees L3 or L4 facts (R7.2, R7.3).
-- **Graph vs vector comparison:** run at Phase 4 per R11.3.
+- **Scope tests:** a client scoped to L2 never sees L3 or L4 facts; an unscoped call is refused
+  (R7.3–R7.5).
+- **Graph vs vector comparison:** run at Phase 4 per R11.3, with ENCAP's passage index as the vector
+  baseline. If ENCAP's index is not ready, the baseline reads the OKF bundles directly; no second
+  index is built (ADR 0009).

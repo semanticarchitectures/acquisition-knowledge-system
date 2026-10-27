@@ -3,8 +3,8 @@
 - Owning repo: knowledge base (`pokb`, working name; repo TBD)
 - Consumers: ENCAP, Aircrew-LangChain, evaluation harness
 - Design narrative: [docs/architecture/kb-prototype-architecture.md](../../../docs/architecture/kb-prototype-architecture.md)
-- Related decisions: ADR 0002, 0003, 0004
-- Status: Draft
+- Related decisions: ADR 0002, 0003, 0004, 0009
+- Status: Draft (revised 2026-10-26 for ADR 0009: ENCAP owns the passage index and access model)
 
 ## Introduction
 
@@ -109,9 +109,13 @@ so that the boundary carries into the CUI phase.
 #### Acceptance Criteria
 
 1. THE graph SHALL assign every named graph to exactly one echelon layer, L0 to L4.
-2. WHILE a client is scoped to layer Ln THE KB SHALL return facts only from Ln and layers above it.
-3. IF a query would return a fact outside the caller's scope THEN THE KB SHALL omit it and SHALL NOT
+2. THE KB SHALL accept the caller's scope as decided by ENCAP's access model and SHALL NOT keep a
+   policy store of its own (ADR 0009). In development, scope comes from a static policy file in
+   ENCAP's access-control format.
+3. WHILE a client is scoped to layer Ln THE KB SHALL return facts only from Ln and layers above it.
+4. IF a query would return a fact outside the caller's scope THEN THE KB SHALL omit it and SHALL NOT
    reveal that it exists.
+5. IF a call arrives with no scope THEN THE KB SHALL refuse it.
 
 ### Requirement 8: Competency questions
 
@@ -147,7 +151,8 @@ runs are reproducible.
 
 #### Acceptance Criteria
 
-1. THE KB SHALL export a versioned snapshot: N-Quads of all named graphs plus the passage index.
+1. THE KB SHALL export a versioned snapshot: N-Quads of all named graphs plus the OKF bundles they
+   cite. ENCAP builds the passage index from those bundles (ADR 0009).
 2. WHERE the Foundry adapter is enabled THE KB SHALL export one dataset per class and per link type,
    with source and claim IDs as columns.
 3. THE KB SHALL be rebuildable from the OKF bundles, the registry and the review log alone.

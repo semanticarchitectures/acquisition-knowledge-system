@@ -73,7 +73,7 @@ Start with [docs/specs-index.md](docs/specs-index.md).
 ## Start here
 
 1. [Vision and goal](docs/vision.md)
-2. [Integrated milestone plan](docs/integrated-plan.md)
+2. [Integrated milestone plan](docs/integrated-plan.md) and [progress against it](docs/progress.md)
 3. [Reference architecture](docs/architecture/reference-architecture.md)
 4. [KB prototype architecture](docs/architecture/kb-prototype-architecture.md)
 5. [Spec: knowledge-base-prototype](.kiro/specs/knowledge-base-prototype/requirements.md)

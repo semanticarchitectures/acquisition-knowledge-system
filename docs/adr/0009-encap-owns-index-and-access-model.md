@@ -1,6 +1,6 @@
 # 0009. ENCAP owns the passage index and the access model; the KB owns the graph
 
-- Status: Proposed — needs Kevin's decision (D0)
+- Status: Accepted (2026-10-26)
 - Date: 2026-10-26
 - Extends: ADR 0004 (where the KB MCP server runs)
 - Related: ADR 0001, ADR 0003, ADR 0005; [integrated plan](../integrated-plan.md)
@@ -48,14 +48,14 @@ section anchors as the citation unit (ADR 0003).
 | C. Each keeps its own (status quo) | No coordination needed | Two indexes and two access models for one corpus; duplicated work on both critical paths; two answers to "who may see this" |
 | D. ENCAP owns access, KB owns the index | Single policy store | Still two places that index the same OKF; ENCAP's document graph without its index has little left |
 
-## Consequences if accepted
+## Consequences
 
 - **Timing fits.** KB Phases 1–2 answer CQs from the graph and cite OKF anchors; they do not need
   passage search. KB hybrid queries and the Phase 4 evaluation need ENCAP's index, planned for
   Feb–Mar 2027, ahead of KB Phase 4 (May–Jun 2027).
 - **Fallback if ENCAP's index slips.** The KB evaluation reads OKF bundles directly, as ENCAP's own
   Phase 2–3 CQ runner does. No second index is built.
-- **Spec changes (after acceptance):**
+- **Spec changes** (made 2026-10-26 in the umbrella; the ENCAP plan change is pending in the ENCAP repo):
   - `knowledge-base-prototype`: remove `store.index`; R7 becomes enforcement of an ENCAP-issued scope;
     tasks 13 and 19 change accordingly.
   - `kb-mcp-contract`: remove `kb_search`; R3 scopes come from ENCAP's access model; dev server reads

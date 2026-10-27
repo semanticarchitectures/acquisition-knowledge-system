@@ -32,7 +32,7 @@ design narrative; durations there are proposed, not committed.
   - _Requirements: R3.2–R3.5_
 - [ ] 12. Implement the SHACL gate and commit to per-source-version named graphs in Oxigraph
   - _Requirements: R5, R6.3_
-- [ ] 13. Implement the passage index and the read tools `kb_search`, `kb_entity`, `kb_cq`, `kb_cite` per spec `kb-mcp-contract`
+- [ ] 13. Implement the graph read tools `kb_entity`, `kb_cq`, `kb_cite` per spec `kb-mcp-contract` (no passage index; ADR 0009)
   - _Requirements: R8.3; kb-mcp-contract R1–R3_
 - [ ] 14. **Gate 1:** CQ1 and CQ2 pass with citations that resolve to OKF anchors.
 
@@ -46,7 +46,7 @@ design narrative; durations there are proposed, not committed.
   - _Requirements: R9; decision-traces R2_
 - [ ] 18. Implement validity intervals, supersession and unsupported-fact flagging
   - _Requirements: R6_
-- [ ] 19. Implement echelon scoping at query time, with scope tests
+- [ ] 19. Implement scope enforcement at query time from an ENCAP-issued scope (dev: policy file in ENCAP's format), with scope tests
   - _Requirements: R7_
 - [ ] 20. Annotate the gold set (about 10 sources) and score extraction and ER
   - _Requirements: R11.1, R11.2_

@@ -1,6 +1,7 @@
 # Integrated milestone plan
 
-- Status: Draft for approval
+- Status: **Baselined 2026-10-26** (git tag `plan-baseline-2026-10-26`). Progress is tracked against
+  this baseline in [progress.md](progress.md); the dates below are not edited as work moves.
 - As of: 2026-10-26 (re-sequenced to the two-layer goal)
 - Related: [vision](vision.md), [portfolio](../.kiro/steering/portfolio.md), [specs index](specs-index.md)
 
@@ -178,11 +179,12 @@ flowchart LR
 
 ## Capacity and priority
 
-The dates assume **Kevin at roughly half time, directing AI coding agents that do most of the
-building**, with no other contributors. Under that assumption the plan runs four to six streams in
+The dates assume **Kevin at half time, directing AI coding agents that do most of the building**
+(confirmed 2026-10-26), with no other contributors. Under that assumption the plan runs four to six streams in
 parallel in most months (see the timeline), which is more than one person can direct well.
 
-If capacity stays at that level, protect work in this order:
+Working rule at this capacity: **no more than three active streams at a time**, chosen in this
+order:
 
 1. **D1:** ENSIM realism audit, ENCAP Phases 2–3, AOC-DFO v1.0, Aircrew-LangChain Phases 1–2, the
    simulation-interface ADR.
@@ -191,11 +193,12 @@ If capacity stays at that level, protect work in this order:
    Phases 3–5.
 4. **D3 onward.**
 
-At that capacity, expect D2 to slip toward the end of 2027 and everything after it by the same amount.
+The baseline dates were set before the three-stream rule. Expect D2 to forecast later than its
+baseline; [progress.md](progress.md) carries the forecast so the baseline stays fixed.
 
 ## Open questions
 
 - [ ] **Target date.** To be revisited once the work is more integrated (decided 2026-10-26).
-- [ ] **Capacity.** How much time is going into AKS, and is anyone else contributing?
+- [x] **Capacity.** Half time, directing AI coding agents (confirmed 2026-10-26).
 - [ ] **Aircrew-LangChain decision traces.** Confirm traces go to files in the trace format until the
       KB exists.
