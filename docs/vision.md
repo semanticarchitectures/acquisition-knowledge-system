@@ -84,6 +84,39 @@ Across all three horizons, one story runs through every component:
 Every step leaves evidence that is cited, traced and checked against authority. That evidence is the
 demonstration.
 
+## Use cases
+
+### Focused acquisition portfolio and resource evaluation
+
+*Added 2026-10-29 (Kevin). Layer 2, built on the layer 1 simulation.*
+
+Global portfolio optimization is combinatorially hard and ill-posed: objectives are contested, data
+is incomplete, and much of it is not public. The defensible form is the one the department already
+uses in mission engineering and analyses of alternatives: a **focused evaluation** of a small set of
+capability alternatives, on chosen missions and scenarios, measured for effectiveness and cost.
+AKS shows that such an evaluation can be run much faster and more often with AI.
+
+| Part | Comes from |
+| --- | --- |
+| Effectiveness measures | The simulated enterprise: ENSIM missions, Aircrew-LangChain agents, GMNS network performance, AOC-DFO mission threads |
+| Cost and funding | The KB (CQ6: program elements and changes between budget submissions); costs labeled notional or order of magnitude |
+| The portfolio | A fictional portfolio extending the fictional program office in spec `ensim-acquisition-missions`, so the demonstration stays public |
+| The decision | A decision trace, with results returned as evidence against the requirement (D5) |
+
+**Division of labor.** AI agents generate and prune alternatives grounded in the KB, set up and run
+simulation cases, explain trade-offs with citations, and record the decision. The search itself uses
+conventional methods (design of experiments, surrogate models, multi-objective Pareto analysis,
+integer programming where it fits), not a language model, so results are reproducible. The output is
+a **trade space, not a single optimum**, labeled decision support.
+
+**First candidate evaluation.** For ENSIM Mission 2 (C5ISR airdrop), compare three ways to meet the
+same communications need: GEO SATCOM, proliferated LEO, and air-launched UAS relays. Run each across
+scenarios that vary outage patterns and mission volume; measure message latency, delivery and mission
+outcome through GMNS; attach notional costs.
+
+**Limits.** Results are only as valid as the simulation, so the realism evidence planned for D1
+matters more here. Public cost data is coarse, typically at program-element level.
+
 ## Safe, secure and reliable: properties the demonstration must show
 
 These are claims the demonstration must back with evidence, not adjectives. Risk classification and

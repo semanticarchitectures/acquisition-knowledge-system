@@ -52,3 +52,8 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 - Umbrella links added in five component repos as pull requests; ENCAP's PR also amends its plan for
   ADR 0009.
 - Portfolio roles for ENSIM and Aircrew-LangChain updated to the re-sequenced plan.
+
+### Week of 2026-10-26, continued (2026-10-29)
+
+- Use case added: focused acquisition portfolio and resource evaluation (vision), recorded in the
+  integrated plan's backlog. No change to the baseline or forecasts.

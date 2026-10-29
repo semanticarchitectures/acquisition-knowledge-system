@@ -196,6 +196,15 @@ order:
 The baseline dates were set before the three-stream rule. Expect D2 to forecast later than its
 baseline; [progress.md](progress.md) carries the forecast so the baseline stays fixed.
 
+## Backlog (not baselined)
+
+Candidates recorded for later. They carry no dates and do not change the baseline; one is promoted
+by adding it to the plan in a new baseline.
+
+| Candidate | Added | Builds on | Earliest sensible start | Note |
+| --- | --- | --- | --- | --- |
+| **Focused portfolio and resource evaluation** ([vision use case](vision.md#focused-acquisition-portfolio-and-resource-evaluation)) | 2026-10-29 | D2 (missions and network at scale), KB CQ6 (funding), decision traces | After D2; as part of D3 or D5 | First candidate: GEO vs proliferated LEO vs UAS relay for Mission 2 communications. Needs a fictional portfolio in `ensim-acquisition-missions` and a spec of its own when promoted |
+
 ## Open questions
 
 - [ ] **Target date.** To be revisited once the work is more integrated (decided 2026-10-26).
