@@ -47,6 +47,10 @@ the shared BFO/CCO pin (ADR 0006).
   one way.
 - **GMNS's move to the shared pin is a CCO 1.x to 2.2 IRI migration.** Its ontology files are not in
   the public repo yet, so the migration cannot be verified from here.
+  *Correction 2026-11-06:* GMNS's ontology is now on branch `specs/python-port` (commit `3f8ebf7`,
+  not yet merged). It is already on CCO 2.x (`ontology/cco.lock`: 2026-04-04, i.e. v2.1), so the
+  move to v2.2 is a pin bump, not an IRI migration: all 19 CCO/BFO terms it uses exist in v2.2 with
+  the same IRIs and labels, and it reasons consistent under HermiT against both v2.1 and v2.2.
 - **C2SIM as the simulation interface across AKS** (ENSIM, Aircrew-LangChain, GMNS, Turnpoint) is a
   candidate decision, deferred until the C2SIM gateway exists. Today the gateway is specified, not
   built, and the UCI profile is not yet selected.

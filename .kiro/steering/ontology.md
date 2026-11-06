@@ -36,7 +36,7 @@ Notes on the current pins:
   tags a new OWL release.
 - **CCO 2.x uses opaque IRIs** (`…/ont00000958` = Information Content Entity). Specs may write
   label shorthand such as `cco:InformationContentEntity`; ontology files must use the IRIs. Moving a
-  CCO 1.x model (GMNS) to 2.2 is an IRI migration, not a version bump.
+  CCO 1.x model to 2.2 is an IRI migration, not a version bump.
 - **CCO 2.2 dropped some 1.x classes** specs may name: there is no Directive Information Content
   Entity (ICE subclasses are Descriptive, Designative, Prescriptive, Representational, Media Content
   Entity, Ideology, Religion), no Military Organization, and no Organization Role.
@@ -46,8 +46,11 @@ Notes on the current pins:
   is logically identical to the pinned tag; it differs only in annotations (scope-note links from a
   Feb 2024 BFO commit) and adds CCO's "Process Profile" (`BFO_0000144`). Importing both files is
   consistent: AOC-DFO's full closure reasons clean under HermiT (ROBOT 1.9.8).
-- **GMNS:** its ontology files are not in the public GMNS repo (checked 2026-10-22, all branches),
-  so its move to this pin cannot be verified yet.
+- **GMNS** (checked 2026-11-06, branch `specs/python-port` at `3f8ebf7`, not yet merged): pins CCO
+  v2.1 (2026-04-04) in `ontology/cco.lock` and imports the *unversioned* merged IRI with no local
+  copy or catalog, so what it loads depends on the network. Moving to this pin is a one-line lock
+  change plus vendoring and a catalog; its 19 CCO/BFO terms are unchanged in v2.2 and it reasons
+  consistent against v2.2. Not yet done in the GMNS repo.
 
 ## Alignment
 
