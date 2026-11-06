@@ -31,7 +31,8 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
       [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1) (AOC-DFO already linked)
 - [ ] Turnpoint goal revised: decision 0018 in [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1)
 - [ ] GMNS Python port spec and ontology files committed: on branch `specs/python-port` ([GMNS #6](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/6)); shared CCO pin in [GMNS #7](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/7); merge pending
-- [ ] Decision traces written to files until the KB exists: confirmed
+- [x] Decision traces written to files until the KB exists: confirmed (2026-11-06); `decision-traces`
+      requirements revision drafted, awaiting approval
 - [x] ADR 0010 accepted (2026-11-06): GMNS keeps its message classes, aligns to AOC-DFO later
 
 ## Active streams (cap: three)
@@ -81,3 +82,8 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
   ENSIM's step-6 "Mission tasking" artifact has a name and no content. Orders are written in
   Aircrew-LangChain's format (its `docs/mission-order.md`) and validated against ENSIM's records;
   the format is offered as input to the simulation-interface ADR (due 2027-01-31).
+- 2026-11-06: decision traces go to files in the trace format until the KB trace store exists,
+  through one recording interface so decision nodes do not change when `kb_record_decision`
+  arrives (confirmed by Kevin). The `decision-traces` requirements are revised to match (R1.4, R3,
+  R7: proposed, awaiting approval); R3.1 previously required `kb_record_decision`, which contradicted
+  the plan.

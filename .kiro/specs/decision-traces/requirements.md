@@ -2,6 +2,10 @@
 
 - Owning repos: knowledge base (schema and store); Aircrew-LangChain (agent capture); ENSIM (synthetic institutional decisions); ENCAP (console capture, later)
 - Status: Draft
+- Revision proposed 2026-11-06, awaiting approval: R1.4 added, R3 rewritten and R7 added so that
+  traces are written to files until the KB trace store exists, as the integrated plan decides and
+  Kevin confirmed on 2026-11-06. `design.md` and `tasks.md` are revised after these requirements
+  are approved.
 
 ## Introduction
 
@@ -25,6 +29,8 @@ using what, and why, so that precedent is searchable and decisions can be replay
 2. THE schema SHALL be expressed as a SHACL shape in the KB ontology.
 3. IF a required field is unknown THEN THE recorder SHALL leave it empty and mark it unknown, and
    SHALL NOT fill it with an inferred value.
+4. THE schema SHALL also be published as a JSON Schema with the same fields, so that a trace written
+   before the KB exists can be validated where it is written.
 
 ### Requirement 2: Reviewer decisions
 
@@ -43,11 +49,20 @@ agent decisions are auditable at the moment they are made.
 
 #### Acceptance Criteria
 
-1. WHEN a LangGraph decision node commits an action THEN THE node SHALL first call
-   `kb_record_decision` and SHALL include the returned trace ID in its state.
-2. THE trace SHALL carry `runRef` linking to the execution telemetry for that run.
-3. IF `kb_record_decision` fails THEN THE node SHALL not commit the action, and SHALL surface the
+1. WHEN a LangGraph decision node commits an action THEN THE node SHALL first record the trace
+   through the trace-recording interface and SHALL include the returned trace ID in its state.
+2. THE trace SHALL carry `runRef` linking to the execution record for that run: the run and
+   checkpoint IDs, and the LangSmith run ID when tracing is on.
+3. IF recording the trace fails THEN THE node SHALL not commit the action, and SHALL surface the
    failure.
+4. WHILE the KB trace store does not exist THE trace-recording interface SHALL write each trace to a
+   file with the run's records, one trace per line, in the format of R1.4.
+5. WHEN `kb_record_decision` is available THEN THE trace-recording interface SHALL call it instead,
+   and no decision node SHALL change.
+6. IF a field's value would be a KB identifier that does not exist yet (for example `inRole` or
+   `underAuthority.issuance`) THEN THE recorder SHALL write the local identifier it has (for example
+   the ENSIM role ID), SHALL list the field as pending resolution, and SHALL NOT invent a KB
+   identifier.
 
 ### Requirement 4: Synthetic institutional decisions
 
@@ -79,3 +94,15 @@ missing reasoning is visible rather than invented.
 
 1. THE KB SHALL support CQ10 (inputs, policy version and precedents for a given decision).
 2. THE KB SHALL return precedents filtered by origin, with the origin shown in every result.
+
+### Requirement 7: Importing traces written to files
+
+**User Story:** As a project lead, I want traces recorded before the KB existed to join the context
+graph, so that decisions from D1 and D2 are on the record at D3.
+
+#### Acceptance Criteria
+
+1. WHEN the KB trace store exists THEN THE KB SHALL import traces written to files, resolve each
+   pending local identifier to a KB identifier, and validate each trace against the shape of R1.2.
+2. IF an imported trace fails validation, or a pending identifier cannot be resolved, THEN THE KB
+   SHALL reject that trace with the failing field and SHALL leave the file unchanged.

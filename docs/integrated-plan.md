@@ -209,5 +209,6 @@ by adding it to the plan in a new baseline.
 
 - [ ] **Target date.** To be revisited once the work is more integrated (decided 2026-10-26).
 - [x] **Capacity.** Half time, directing AI coding agents (confirmed 2026-10-26).
-- [ ] **Aircrew-LangChain decision traces.** Confirm traces go to files in the trace format until the
-      KB exists.
+- [x] **Aircrew-LangChain decision traces.** Traces go to files in the trace format until the KB
+      exists, through one recording interface (confirmed 2026-11-06; `decision-traces` R3 revision
+      awaiting approval).
