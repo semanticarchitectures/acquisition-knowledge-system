@@ -12,7 +12,7 @@ On track, At risk, Late, Done. Each weekly update adds a log entry and revises t
 | ID | Milestone | Baseline | Forecast | Status | Note |
 | --- | --- | --- | --- | --- | --- |
 | D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | At risk | ADRs 0009, 0010 accepted; GMNS spec and ontology on a branch; 7 PRs open, none merged; 0002–0004 and 0008 open |
-| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | None of the Nov 1 starts has begun; AOC-DFO Phases 1–4 not started |
+| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 built 2026-11-06 (branch, gate passed, not merged); ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started |
 | D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin ready for review (PRs #6, #7); core port not started |
 | D3 | AI in the enterprise | 2027-12-15 | 2028-03-31 | At risk | Follows D2 |
 | D4 | Plan to AOC over a degraded network | 2028-05-31 | 2028-08-31 | At risk | Follows D3 |
@@ -40,7 +40,7 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 | --- | --- | --- | --- |
 | D0 decisions and quick starts | Umbrella, Turnpoint, GMNS | 2026-10-27 to 2026-11-30 | Active: GMNS items done on branches; reviews and decisions pending |
 | AOC-DFO Phases 1–4 | AOC-DFO | 2026-10-26 to 2026-12-31 | Behind: 8 of 64 tasks done (Phase 0); only design 3.7 for ADR 0010 since 2026-10-24 |
-| Third stream from Nov 1 | Recommended: Aircrew-LangChain Phase 1 | from 2026-11-01 | Not chosen |
+| Aircrew-LangChain Phase 1 (mission order, identity) | Aircrew-LangChain | 2026-11-01 to 2026-12-31 | Active: chosen 2026-11-06; built the same day on branch `phase-1/mission-order`, gate passed; merge pending |
 
 ## Log
 
@@ -71,3 +71,13 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
   (ENSIM realism audit, ENCAP Phase 2 gate, Aircrew-LangChain Phase 1) have not begun.
 - AOC-DFO Phases 1–4 have not started, 1.5 of 9.5 baseline weeks in.
 - Forecasts: D0 to At risk (review backlog); D1 forecast moved to 2027-04-30.
+- 2026-11-06: Aircrew-LangChain Phase 1 chosen as the third active stream. Built the same day on
+  branch `phase-1/mission-order` (commit `94b8c71`, not merged): mission orders with a roster and
+  nets, checked against ENSIM's operating model at `aa7b714`; agent ids in the
+  `<Type>V<version>.Instance<n>` form the `decision-traces` spec uses; authority keyed by role.
+  Gate passed: scripted scorecards unchanged from Phase 0, a two-loadmaster run, invalid orders
+  rejected with their reasons. live2 recorded as the `GeneralistV1` baseline.
+- Mission orders do not come from ENSIM yet, as the plan assumes for Aircrew-LangChain Phases 1–2:
+  ENSIM's step-6 "Mission tasking" artifact has a name and no content. Orders are written in
+  Aircrew-LangChain's format (its `docs/mission-order.md`) and validated against ENSIM's records;
+  the format is offered as input to the simulation-interface ADR (due 2027-01-31).
