@@ -42,7 +42,9 @@ the shared BFO/CCO pin (ADR 0006).
 
 - ADR 0006's decisions stand. Its rejection of a monorepo with GMNS stands too, but for a different
   reason: the repository model is now decided by ADR 0008, not by GMNS being outside AKS.
-- **Alignment task (umbrella level):** GMNS's UCI-to-CCO mapping must use AOC-DFO's message classes
+- *Amended by [ADR 0010](0010-gmns-message-classes-align-to-aoc-dfo.md) (2026-11-06): GMNS keeps its
+  message classes and aligns them to AOC-DFO's later.*
+  **Alignment task (umbrella level):** GMNS's UCI-to-CCO mapping must use AOC-DFO's message classes
   (InformationArtifactType and its subclasses) rather than define its own, so one message is modeled
   one way.
 - **GMNS's move to the shared pin is a CCO 1.x to 2.2 IRI migration.** Its ontology files are not in
