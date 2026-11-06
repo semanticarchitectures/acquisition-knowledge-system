@@ -87,3 +87,6 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
   arrives (confirmed by Kevin). The `decision-traces` requirements are revised to match (R1.4, R3,
   R7: proposed, awaiting approval); R3.1 previously required `kb_record_decision`, which contradicted
   the plan.
+- 2026-11-06: `decision-traces` requirements revision approved. Design revised to match (one
+  recording interface, file backend until the KB exists, JSON Schema, replay through
+  `kb_record_decision` at D3): proposed, awaiting approval. Tasks follow the design.

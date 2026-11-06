@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | [knowledge-base-prototype](../.kiro/specs/knowledge-base-prototype/requirements.md) | Public corpus to cited knowledge graph of the Mission Planning program office | Knowledge base | Draft |
 | [kb-mcp-contract](../.kiro/specs/kb-mcp-contract/requirements.md) | One MCP contract for every KB consumer | Knowledge base, ENCAP | Draft |
-| [decision-traces](../.kiro/specs/decision-traces/requirements.md) | Context graph: decision trace schema and capture paths | Knowledge base, Aircrew-LangChain, ENSIM | Draft |
+| [decision-traces](../.kiro/specs/decision-traces/requirements.md) | Context graph: decision trace schema and capture paths | Knowledge base, Aircrew-LangChain, ENSIM | Requirements approved (2026-11-06); design revision proposed |
 | [ensim-acquisition-missions](../.kiro/specs/ensim-acquisition-missions/requirements.md) | Acquisition mission set for evaluation | ENSIM | Draft (requirements only) |
 | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo/tree/main/.kiro/specs/aoc-dfo) (in component repo) | AOC data flow ontology, mission-thread layer, KB alignment target | AOC-DFO | Requirements approved (v1.1, 2026-10-24); Phase 0 scaffolding done |
 
