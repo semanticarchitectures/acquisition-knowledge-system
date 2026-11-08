@@ -2,8 +2,8 @@
 
 - Requirements: [requirements.md](requirements.md) (approved 2026-11-06)
 - Narrative: [kb-prototype-architecture.md, "Context graph: decision traces"](../../../docs/architecture/kb-prototype-architecture.md#context-graph-decision-traces)
-- Status: Draft. Revision proposed 2026-11-06, awaiting approval: one recording interface with a
-  file backend until the KB trace store exists (R3), the JSON Schema (R1.4), and import at D3 (R7).
+- Status: Design approved (2026-11-07): one recording interface with a file backend until the KB
+  trace store exists (R3), the JSON Schema (R1.4), and import at D3 (R7).
 
 ## Overview
 

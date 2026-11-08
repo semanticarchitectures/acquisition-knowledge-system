@@ -90,3 +90,5 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 - 2026-11-06: `decision-traces` requirements revision approved. Design revised to match (one
   recording interface, file backend until the KB exists, JSON Schema, replay through
   `kb_record_decision` at D3): proposed, awaiting approval. Tasks follow the design.
+- 2026-11-07: `decision-traces` design approved. Tasks revised and proposed: tasks 1 to 5 (agent
+  traces to files) land in Aircrew-LangChain Phase 2, before D1; the KB store and the replay are D3.

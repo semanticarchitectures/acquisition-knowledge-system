@@ -4,7 +4,7 @@
 - Status: Requirements approved (2026-11-06)
 - Revision of 2026-11-06: R1.4 added, R3 rewritten and R7 added so that traces are written to files
   until the KB trace store exists, as the integrated plan decides and Kevin confirmed. `design.md`
-  is revised to match (awaiting approval); `tasks.md` follows once the design is approved.
+  was revised to match and approved on 2026-11-07; `tasks.md` is proposed.
 
 ## Introduction
 
