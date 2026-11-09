@@ -120,3 +120,5 @@ November, so four streams are in practice active against a cap of three.
 - Backlog candidate added and scoped: a realizable program documentation set for a mission planning
   system for large-scale autonomous operations that integrates with current mission planning and
   operations; Turnpoint as its reference implementation.
+- Decided 2026-11-08: the program's requirements start from FAA Part 108 (with Part 146), and
+  military requirements are written as traced deltas against that civil baseline.
