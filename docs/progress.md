@@ -122,3 +122,6 @@ November, so four streams are in practice active against a cap of three.
   operations; Turnpoint as its reference implementation.
 - Decided 2026-11-08: the program's requirements start from FAA Part 108 (with Part 146), and
   military requirements are written as traced deltas against that civil baseline.
+- CONOPS input 2026-11-08: contested logistics mission set; unclassified humanitarian assistance in a
+  remote area (logistics and security); lifecycle of prepositioning, manned and unmanned airlift,
+  sustainment and redeployment. Captured in `docs/program/program-definition.md`.
