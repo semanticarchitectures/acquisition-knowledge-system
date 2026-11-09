@@ -1,7 +1,8 @@
 # Progress against the baseline
 
 - Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
-- Capacity: Kevin at half time, directing AI coding agents; working rule of at most three active streams
+- Capacity: Kevin at half time, directing AI coding agents. Working rule (2026-11-08): at most about
+  three unmerged results waiting for review, and a standing weekly review session
 - Updated: 2026-11-08
 
 The baseline dates never change. **Forecast** is the current best estimate; **status** is one of
@@ -36,7 +37,7 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
       before Aircrew-LangChain Phase 2)
 - [x] ADR 0010 accepted (2026-11-06): GMNS keeps its message classes, aligns to AOC-DFO later
 
-## Active streams (cap: three)
+## Active streams
 
 | Stream | Component | Baseline window | State |
 | --- | --- | --- | --- |
@@ -114,3 +115,7 @@ November, so four streams are in practice active against a cap of three.
   3.7 and the w3id request, not Phases 1–4.
 - Decisions open: ADRs 0002–0004 and 0008; `decision-traces` tasks; Turnpoint decision 0018 (in
   Turnpoint #1); ENCAP's BFO/CCO stance before its Phase 3.
+- Agreed 2026-11-08: the capacity rule now limits work waiting for review (about three unmerged
+  results), with a standing weekly review session. Baseline dates unchanged.
+- Backlog candidate added: an emulated program documentation set for a fictional program around GMNS,
+  with Turnpoint as an application in it.

@@ -183,8 +183,15 @@ The dates assume **Kevin at half time, directing AI coding agents that do most o
 (confirmed 2026-10-26), with no other contributors. Under that assumption the plan runs four to six streams in
 parallel in most months (see the timeline), which is more than one person can direct well.
 
-Working rule at this capacity: **no more than three active streams at a time**, chosen in this
-order:
+Working rule at this capacity (revised 2026-11-08): **review, not building, is the limit.** The
+first weeks showed AI agents building a two-month phase in a day while finished work waited weeks
+for review. So the rule limits work in review, not work in progress:
+
+- **At most about three unmerged results waiting for Kevin's review** (pull requests, branches
+  without a PR, proposed ADRs or spec phases). Agents start new work only when the queue is below
+  that.
+- **A standing weekly review session** clears the queue: merge, approve or send back.
+- **Agent sessions follow the critical path**, in this order:
 
 1. **D1:** ENSIM realism audit, ENCAP Phases 2–3, AOC-DFO v1.0, Aircrew-LangChain Phases 1–2, the
    simulation-interface ADR.
@@ -193,8 +200,8 @@ order:
    Phases 3–5.
 4. **D3 onward.**
 
-The baseline dates were set before the three-stream rule. Expect D2 to forecast later than its
-baseline; [progress.md](progress.md) carries the forecast so the baseline stays fixed.
+The baseline dates were set before this rule and stay fixed; [progress.md](progress.md) carries the
+forecast. The original rule (at most three active streams, 2026-10-26) is replaced.
 
 ## Backlog (not baselined)
 
@@ -204,6 +211,7 @@ by adding it to the plan in a new baseline.
 | Candidate | Added | Builds on | Earliest sensible start | Note |
 | --- | --- | --- | --- | --- |
 | **Focused portfolio and resource evaluation** ([vision use case](vision.md#focused-acquisition-portfolio-and-resource-evaluation)) | 2026-10-29 | D2 (missions and network at scale), KB CQ6 (funding), decision traces | After D2; as part of D3 or D5 | First candidate: GEO vs proliferated LEO vs UAS relay for Mission 2 communications. Needs a fictional portfolio in `ensim-acquisition-missions` and a spec of its own when promoted |
+| **Emulated program documentation set** | 2026-11-08 | `ensim-acquisition-missions` (fictional program office), AOC-DFO, GMNS, Turnpoint decision 0018 | With the ENSIM acquisition missions build (from Jan 2027), before Turnpoint Phase 5 (Sep 2027) | Surrogate "official direction" for a fictional program built around the GMNS network with Turnpoint as an application in it: CONOPS, capability and technical requirements, acquisition strategy, systems engineering plan, test strategy, security and program protection guidance, and the rest of the set the chosen acquisition pathway calls for. Each document follows a cited public template, is marked fictional, and is replaceable by official documents where they exist. Kevin supplies the inputs for Turnpoint's CONOPS and requirements when the time comes. Needs a spec of its own when promoted |
 
 ## Open questions
 
