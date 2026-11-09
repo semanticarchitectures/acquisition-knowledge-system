@@ -4,7 +4,7 @@
   documentation set when that backlog candidate is promoted
   ([integrated plan, backlog](../integrated-plan.md#backlog-not-baselined)).
 - Owner: Kevin Kelly
-- Last input: 2026-11-08
+- Last input: 2026-11-08 (security operations scope)
 
 Every statement below is Kevin's input unless marked *(proposed)*. Proposed items are
 recommendations awaiting his decision.
@@ -44,6 +44,9 @@ recommendations awaiting his decision.
   3. Sustainment
   4. Redeployment
 
+- **Security operations are observation and non-violent means, such as talking.** (2026-11-08) No
+  weapons employment or use of force, consistent with Turnpoint's rules.
+
 ### Proposed elaboration *(proposed, 2026-11-08; for Kevin's review)*
 
 | Lifecycle phase | Planning problem for the system | Where AKS already has it |
@@ -56,8 +59,7 @@ recommendations awaiting his decision.
 - **"Contested", kept unclassified:** degraded or denied communications and navigation, congested
   airspace shared with civil and relief aircraft, damaged infrastructure, weather, and ground security
   threats, all with notional parameters.
-- **Security operations scope:** surveillance, route and area security, force protection. No weapons
-  employment, consistent with Turnpoint's rules.
+
 - **Part 108 fit:** humanitarian operations often run in civil airspace alongside civil and relief
   drones, and a domestic disaster-response variant would fall directly under Part 108. That makes the
   civil baseline operationally real, not only a reference point.
@@ -70,4 +72,4 @@ recommendations awaiting his decision.
 - [ ] Integration points: which current planning and operations functions the system must work with.
 - [ ] Setting: host-nation scenario (as ENSIM Mission 1) or a domestic disaster-response variant, or
       both.
-- [ ] Confirm the security-operations scope above.
+- [x] Security-operations scope: observation and non-violent means, such as talking (2026-11-08).
