@@ -117,5 +117,6 @@ November, so four streams are in practice active against a cap of three.
   Turnpoint #1); ENCAP's BFO/CCO stance before its Phase 3.
 - Agreed 2026-11-08: the capacity rule now limits work waiting for review (about three unmerged
   results), with a standing weekly review session. Baseline dates unchanged.
-- Backlog candidate added: an emulated program documentation set for a fictional program around GMNS,
-  with Turnpoint as an application in it.
+- Backlog candidate added and scoped: a realizable program documentation set for a mission planning
+  system for large-scale autonomous operations that integrates with current mission planning and
+  operations; Turnpoint as its reference implementation.
