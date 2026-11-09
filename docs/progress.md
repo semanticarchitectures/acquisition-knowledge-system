@@ -2,7 +2,7 @@
 
 - Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
 - Capacity: Kevin at half time, directing AI coding agents; working rule of at most three active streams
-- Updated: 2026-11-06
+- Updated: 2026-11-08
 
 The baseline dates never change. **Forecast** is the current best estimate; **status** is one of
 On track, At risk, Late, Done. Each weekly update adds a log entry and revises the tables.
@@ -32,7 +32,8 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 - [ ] Turnpoint goal revised: decision 0018 in [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1)
 - [ ] GMNS Python port spec and ontology files committed: on branch `specs/python-port` ([GMNS #6](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/6)); shared CCO pin in [GMNS #7](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/7); merge pending
 - [x] Decision traces written to files until the KB exists: confirmed (2026-11-06); `decision-traces`
-      requirements revision drafted, awaiting approval
+      requirements approved 2026-11-06, design approved 2026-11-07, tasks proposed (approval needed
+      before Aircrew-LangChain Phase 2)
 - [x] ADR 0010 accepted (2026-11-06): GMNS keeps its message classes, aligns to AOC-DFO later
 
 ## Active streams (cap: three)
@@ -42,6 +43,9 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 | D0 decisions and quick starts | Umbrella, Turnpoint, GMNS | 2026-10-27 to 2026-11-30 | Active: GMNS items done on branches; reviews and decisions pending |
 | AOC-DFO Phases 1–4 | AOC-DFO | 2026-10-26 to 2026-12-31 | Behind: 8 of 64 tasks done (Phase 0); only design 3.7 for ADR 0010 since 2026-10-24 |
 | Aircrew-LangChain Phase 1 (mission order, identity) | Aircrew-LangChain | 2026-11-01 to 2026-12-31 | Active: chosen 2026-11-06; built the same day on branch `phase-1/mission-order`, gate passed; merge pending |
+
+Note (2026-11-08): GMNS work (PR #7 merged into `specs/python-port`) has continued during
+November, so four streams are in practice active against a cap of three.
 
 ## Log
 
@@ -92,3 +96,21 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
   `kb_record_decision` at D3): proposed, awaiting approval. Tasks follow the design.
 - 2026-11-07: `decision-traces` design approved. Tasks revised and proposed: tasks 1 to 5 (agent
   traces to files) land in Aircrew-LangChain Phase 2, before D1; the KB store and the replay are D3.
+
+### Review 2026-11-08
+
+- **Building is faster than the plan assumed; review is the constraint.** Aircrew-LangChain Phase 1
+  (baseline Nov–Dec) was built in a day, and its gate was verified independently on 2026-11-08: 108
+  tests pass (88 on main), five scripted scorecards unchanged, the two-loadmaster run completes, and an
+  invalid order is rejected with every reason. But only one pull request has merged since the
+  baseline (GMNS #7, into a branch, not `main`). Seven PRs wait on review, and the Phase 1 branch has
+  no PR at all.
+- Aircrew-LangChain Phase 1 and its umbrella-link PR both change `README.md`; whichever merges second
+  may need a small conflict fix.
+- Aircrew-LangChain found that ENSIM does not yet emit mission orders (its "Mission tasking" artifact
+  has a name and no content), so the order format is that project's own. Input to the
+  simulation-interface ADR due 2027-01-31.
+- ENSIM and ENCAP: no commits since September. AOC-DFO: still 8 of 64 tasks; recent work is design
+  3.7 and the w3id request, not Phases 1–4.
+- Decisions open: ADRs 0002–0004 and 0008; `decision-traces` tasks; Turnpoint decision 0018 (in
+  Turnpoint #1); ENCAP's BFO/CCO stance before its Phase 3.
