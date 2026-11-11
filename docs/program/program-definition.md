@@ -4,7 +4,7 @@
   documentation set when that backlog candidate is promoted
   ([integrated plan, backlog](../integrated-plan.md#backlog-not-baselined)).
 - Owner: Kevin Kelly
-- Last input: 2026-11-08 (security operations scope)
+- Last input: 2026-11-10 (capabilities are dual-use)
 
 Every statement below is Kevin's input unless marked *(proposed)*. Proposed items are
 recommendations awaiting his decision.
@@ -32,6 +32,16 @@ recommendations awaiting his decision.
   statutory deadline 2026-12-07). Requirements pin the text and section they derive from and are
   re-diffed when the final rule publishes.
 - Industry consensus standards Part 108 relies on are cited, never reproduced (license).
+
+- **Capabilities are dual-use.** With the exception of kinetic targeting, military capability
+  requirements align with commercially useful capabilities: commercial security and logistics systems
+  observe, communicate and airdrop, and operate under Part 108. (2026-11-10) Kinetic targeting is out
+  of scope for this program.
+- *(proposed, 2026-11-10)* So the military delta sits mostly in the **operating environment and
+  integration**, not in mission capabilities: airspace control through the ATO and ACO rather than
+  Part 146 data services; contested or denied communications and navigation, where commercial systems
+  typically assume reliable links and GNSS; security accreditation and classification; authority and
+  approval chains; interoperability standards (UCI, C2SIM); scale; and host-nation operation.
 
 ## CONOPS: mission set
 
