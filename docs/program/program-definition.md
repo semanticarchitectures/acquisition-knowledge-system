@@ -4,7 +4,7 @@
   documentation set when that backlog candidate is promoted
   ([integrated plan, backlog](../integrated-plan.md#backlog-not-baselined)).
 - Owner: Kevin Kelly
-- Last input: 2026-11-10 (capabilities are dual-use)
+- Last input: 2026-11-11 (common use cases)
 
 Every statement below is Kevin's input unless marked *(proposed)*. Proposed items are
 recommendations awaiting his decision.
@@ -73,6 +73,44 @@ recommendations awaiting his decision.
 - **Part 108 fit:** humanitarian operations often run in civil airspace alongside civil and relief
   drones, and a domestic disaster-response variant would fall directly under Part 108. That makes the
   civil baseline operationally real, not only a reference point.
+
+## Common use cases across military, civil and commercial operations
+
+- **A documented set of use cases around logistics, security, and search and rescue,** each with
+  military, civil and commercial applications, so there is a set of templates in common. (2026-11-11)
+
+### Template *(proposed, 2026-11-11)*
+
+One template per use case. The shared part is written once; only the sector columns differ.
+
+| Field | Content |
+| --- | --- |
+| ID, name, family | For example `UC-LOG-01`, family logistics, security, or search and rescue |
+| Vignette | A short operational story, labeled public, representative or fictional |
+| Lifecycle | Phases used, from the CONOPS lifecycle (prepositioning, deployment, sustainment, redeployment) or the family's own |
+| Shared capabilities | What the system does in every sector (observe, communicate, plan routes, deliver, deconflict) |
+| Per sector: military, civil, commercial | Actors and users; legal and regulatory basis (Part 108 and 146, public-aircraft operations, theater airspace control); authority and approvals; operating environment; constraints such as privacy |
+| Delta | What changes between sectors and why, traced to the regulation or doctrine that causes it |
+| Information exchanges | Messages and the public standards they use (UTM and Remote ID, UCI, C2SIM, ATO and ACO) |
+| Scale | Notional parameters: sorties, aircraft, delivery points or search area |
+| Measures of effectiveness | What success means, measurable in simulation |
+| Simulation mapping | Which ENSIM mission, GMNS configuration and Aircrew-LangChain scenario exercise it |
+| Requirements | Requirement IDs that trace to this use case |
+
+Each use case is also a mission thread in the shared ontology (AOC-DFO's mission-thread layer), so
+the templates are machine-readable and requirements, simulations and decision traces can cite them.
+
+### First set *(proposed, 2026-11-11)*
+
+| ID | Family | Military | Civil | Commercial |
+| --- | --- | --- | --- | --- |
+| UC-LOG-01 | Logistics | Resupply in a contested humanitarian operation (this CONOPS; ENSIM Missions 1–2) | Disaster-relief delivery by emergency management agencies | Medical and parcel delivery to remote sites |
+| UC-SEC-01 | Security | Observation and talking at distribution points and along routes | Public-safety monitoring of events and evacuation routes | Perimeter observation of infrastructure such as utilities and pipelines |
+| UC-SAR-01 | Search and rescue | Search for aircrew or survivors after an incident | Inland and maritime search by civil agencies and volunteer organizations | Search support for offshore and remote-site operators |
+
+Search and rescue already spans the sectors in practice: in the United States, inland search is
+coordinated by an Air Force rescue coordination center and much of it is flown by the Civil Air
+Patrol, the Air Force's civilian auxiliary.
 
 ## Open inputs
 

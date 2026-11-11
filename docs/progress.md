@@ -125,3 +125,6 @@ November, so four streams are in practice active against a cap of three.
 - CONOPS input 2026-11-08: contested logistics mission set; unclassified humanitarian assistance in a
   remote area (logistics and security); lifecycle of prepositioning, manned and unmanned airlift,
   sustainment and redeployment. Captured in `docs/program/program-definition.md`.
+- Input 2026-11-11: a documented set of common use cases (logistics, security, search and rescue)
+  with military, civil and commercial applications; proposed template and first set in
+  `docs/program/program-definition.md`.
