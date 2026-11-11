@@ -1,6 +1,6 @@
 # 0003. OKF is authoritative for documents; the RDF graph is authoritative for entities, claims and traces
 
-- Status: Proposed
+- Status: Accepted (2026-11-11)
 - Date: 2026-10-17
 - Departs from: reference architecture, "the OKF bundle remains the source of truth" and "layers link
   upward with typed relations: edges in OKF frontmatter"

@@ -2,8 +2,8 @@
 
 - Requirements: [requirements.md](requirements.md) (approved 2026-11-06)
 - Design: [design.md](design.md) (approved 2026-11-07)
-- Status: Proposed 2026-11-07, awaiting approval. Renumbered from the earlier draft, in which no task
-  had started, to put the work before D1 first.
+- Status: Approved 2026-11-11. Renumbered on 2026-11-07 from the earlier draft, in which no task had
+  started, to put the work before D1 first.
 
 Each task names the repo it lands in. Dates are the milestone a task serves, not commitments.
 

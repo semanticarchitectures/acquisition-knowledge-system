@@ -1,6 +1,6 @@
 # 0002. Embedded RDF store (Oxigraph) for the knowledge and context graph
 
-- Status: Proposed
+- Status: Accepted (2026-11-11)
 - Date: 2026-10-17
 
 ## Context

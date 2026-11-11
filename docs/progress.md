@@ -3,7 +3,7 @@
 - Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
 - Capacity: Kevin at half time, directing AI coding agents. Working rule (2026-11-08): at most about
   three unmerged results waiting for review, and a standing weekly review session
-- Updated: 2026-11-08
+- Updated: 2026-11-11
 
 The baseline dates never change. **Forecast** is the current best estimate; **status** is one of
 On track, At risk, Late, Done. Each weekly update adds a log entry and revises the tables.
@@ -12,9 +12,9 @@ On track, At risk, Late, Done. Each weekly update adds a log entry and revises t
 
 | ID | Milestone | Baseline | Forecast | Status | Note |
 | --- | --- | --- | --- | --- | --- |
-| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | At risk | ADRs 0009, 0010 accepted; GMNS spec and ontology on a branch; 7 PRs open, none merged; 0002–0004 and 0008 open |
-| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 built 2026-11-06 (branch, gate passed, not merged); ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started |
-| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin ready for review (PRs #6, #7); core port not started |
+| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | On track | All open ADRs decided; all seven PRs merged 2026-11-11; remaining: AOC-DFO restart is a D1 item |
+| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 merged 2026-11-11 (108 tests pass on main); Phase 2 unblocked; ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started |
+| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin merged 2026-11-11; core port not started (baseline start 2026-12-01) |
 | D3 | AI in the enterprise | 2027-12-15 | 2028-03-31 | At risk | Follows D2 |
 | D4 | Plan to AOC over a degraded network | 2028-05-31 | 2028-08-31 | At risk | Follows D3 |
 | D5 | Closed loop | 2028-10-31 | 2029-01-31 | At risk | Follows D4 |
@@ -24,14 +24,14 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 ## D0 checklist
 
 - [x] ADR 0009 accepted (2026-10-26); umbrella specs revised to match
-- [ ] ADRs 0002, 0003, 0004, 0008 decided
-- [ ] Umbrella-link PRs merged: [ENSIM #1](https://github.com/semanticarchitectures/ensim/pull/1),
+- [x] ADRs 0002, 0003, 0004 (option C), 0008 (option A) accepted 2026-11-11
+- [x] Umbrella-link PRs merged (2026-11-11): [ENSIM #1](https://github.com/semanticarchitectures/ensim/pull/1),
       [ENCAP #1](https://github.com/semanticarchitectures/encap/pull/1),
       [Aircrew-LangChain #1](https://github.com/semanticarchitectures/aircrew-langchain/pull/1),
       [GMNS #5](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/5),
       [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1) (AOC-DFO already linked)
-- [ ] Turnpoint goal revised: decision 0018 in [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1)
-- [ ] GMNS Python port spec and ontology files committed: on branch `specs/python-port` ([GMNS #6](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/6)); shared CCO pin in [GMNS #7](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/7); merge pending
+- [x] Turnpoint goal revised (merged 2026-11-11): decision 0018 in [Turnpoint #1](https://github.com/semanticarchitectures/turnpoint/pull/1)
+- [x] GMNS Python port spec and ontology files committed (merged 2026-11-11): on branch `specs/python-port` ([GMNS #6](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/6)); shared CCO pin in [GMNS #7](https://github.com/semanticarchitectures/GlobalMobileNetworkSim/pull/7); merge pending
 - [x] Decision traces written to files until the KB exists: confirmed (2026-11-06); `decision-traces`
       requirements approved 2026-11-06, design approved 2026-11-07, tasks proposed (approval needed
       before Aircrew-LangChain Phase 2)
@@ -128,3 +128,11 @@ November, so four streams are in practice active against a cap of three.
 - Input 2026-11-11: a documented set of common use cases (logistics, security, search and rescue)
   with military, civil and commercial applications; proposed template and first set in
   `docs/program/program-definition.md`.
+
+### Review session 2026-11-11
+
+- Merged: ENSIM #1, ENCAP #1, Aircrew-LangChain #1, GMNS #5, Turnpoint #1 (accepts decision 0018),
+  GMNS #6, Aircrew-LangChain #2 (Phase 1). Aircrew-LangChain `main` re-tested: 108 passed.
+- Accepted: ADRs 0002, 0003, 0004 (option C), 0008 (option A). Approved: `decision-traces` tasks.
+- Review queue now empty. D0 back on track. Next per the plan: AOC-DFO Phases 1–4 and ENSIM's Mission 1
+  realism audit (with use case UC-LOG-01); Aircrew-LangChain Phase 2 is unblocked.

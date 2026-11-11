@@ -1,6 +1,6 @@
 # 0004. Where the KB MCP server runs
 
-- Status: Proposed — needs a decision before KB Phase 1
+- Status: Accepted (2026-11-11): option C. Access model refined by ADR 0009
 - Date: 2026-10-17
 - Departs from: reference architecture, "ENCAP is the only runtime" and "Corpus: data only"
 

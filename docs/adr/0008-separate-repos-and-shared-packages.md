@@ -1,6 +1,6 @@
 # 0008. Separate repos plus versioned shared packages, or a monorepo
 
-- Status: Proposed — needs Kevin's decision
+- Status: Accepted (2026-11-11): option A, separate repos plus versioned shared packages
 - Date: 2026-10-25
 - Related: ADR 0001, ADR 0006, ADR 0007
 
