@@ -30,3 +30,4 @@ Statuses: Draft, Requirements approved, Design approved, In progress, Done, Move
 | [0012](adr/0012-aks-simulation-interface.md) | AKS simulation interface: HLA transport now, C2SIM/UCI content profile at D4/D5 | Accepted |
 | [0013](adr/0013-security-labeled-traffic-and-cross-domain-solutions.md) | Security-labeled traffic streams and Cross Domain Solutions (representative, public) | Accepted |
 | [0014](adr/0014-palantir-foundry-integration.md) | Palantir Foundry as an operator-facing consumer of simulation data | Proposed |
+| [0015](adr/0015-shared-citation-form.md) | One citation form across the shared model | Proposed |
