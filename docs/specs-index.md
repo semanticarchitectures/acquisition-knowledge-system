@@ -24,3 +24,4 @@ Statuses: Draft, Requirements approved, Design approved, In progress, Done, Move
 | [0008](adr/0008-separate-repos-and-shared-packages.md) | Separate repos plus shared packages, or a monorepo | Accepted (option A) |
 | [0009](adr/0009-encap-owns-index-and-access-model.md) | ENCAP owns passage index and access model; KB owns the graph | Accepted |
 | [0010](adr/0010-gmns-message-classes-align-to-aoc-dfo.md) | GMNS keeps its message classes; aligns them to AOC-DFO later | Accepted |
+| [0011](adr/0011-shared-citation-form.md) | One citation form across the shared model | Proposed |

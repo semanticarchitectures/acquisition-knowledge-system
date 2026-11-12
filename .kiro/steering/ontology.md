@@ -66,7 +66,9 @@ Notes on the current pins:
 - **Time:** relationships that change (assignment, reporting line, portfolio membership, funding)
   are n-ary nodes with `validFrom` and `validTo`. Never state structure without a validity interval.
 - **Provenance:** each source version is its own named graph described with PROV-O. Each claim links
-  to the OKF section anchor it came from.
+  to the OKF section anchor it came from. Citation form (ADR 0011, proposed): terms cite with
+  `dcterms:source`, individuals and claims with `prov:wasDerivedFrom`, both to
+  `<base>/source/<id>#<anchor>`; no separate anchor property.
 - **Echelons:** L0 U.S. Government, L1 DoD, L2 Department of the Air Force, L3 Portfolio, L4 Program
   office. Each is a named-graph set. An agent reads its own layer and every layer above, never below.
 - **Supersession:** a fact is supported while at least one non-superseded source asserts it.
