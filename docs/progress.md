@@ -14,7 +14,7 @@ On track, At risk, Late, Done. Each weekly update adds a log entry and revises t
 | --- | --- | --- | --- | --- | --- |
 | D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | On track | All open ADRs decided; all seven PRs merged 2026-11-11; remaining: AOC-DFO restart is a D1 item |
 | D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 merged 2026-11-11 (108 tests pass on main); Phase 2 unblocked; ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started |
-| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin merged 2026-11-11; core port not started (baseline start 2026-12-01) |
+| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin merged 2026-11-11; Python port **deferred** (GMNS Amendment A3 / ADR 0011) — MATLAB authoritative, network layer couples over the simulation interface; risk shifts to native MATLAB UCI/C2SIM |
 | D3 | AI in the enterprise | 2027-12-15 | 2028-03-31 | At risk | Follows D2 |
 | D4 | Plan to AOC over a degraded network | 2028-05-31 | 2028-08-31 | At risk | Follows D3 |
 | D5 | Closed loop | 2028-10-31 | 2029-01-31 | At risk | Follows D4 |

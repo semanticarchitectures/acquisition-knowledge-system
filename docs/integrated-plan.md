@@ -26,7 +26,7 @@ section before relying on anything past D1.
 | Then | Now | Why |
 | --- | --- | --- |
 | AI in the enterprise first (KB, ENCAP: D1–D3 by Jun 2027) | Simulation first (D1–D2 by Aug 2027); KB and ENCAP integration at D3 (Dec 2027) | The goal puts the simulated enterprise first and builds on it |
-| GMNS port late (D4, Dec 2027) | GMNS port and network coupling early (D2, Aug 2027) | "At scale" and "realistically" both need the network layer |
+| GMNS port late (D4, Dec 2027) | GMNS MATLAB network layer and coupling early (D2, Aug 2027); UCI/C2SIM built natively in MATLAB (ADR 0011) | "At scale" and "realistically" both need the network layer; the MATLAB layer largely exists, so coupling can start early |
 | Simulation-interface ADR mid-2027 | Simulation-interface ADR by Jan 2027 | D2 couples ENSIM, Aircrew-LangChain and GMNS; the interface must exist first |
 | ENCAP Phase 3 late | ENCAP Phases 2–3 early (D1) | ENCAP's synthesis of doctrine into an operating model is AI *architecting* the enterprise |
 | Decision traces written to the KB | Decision traces written to files in the trace format until the KB exists, imported later | The KB now starts after D1 |
@@ -37,9 +37,9 @@ section before relying on anything past D1.
 | --- | --- | --- | --- | --- |
 | **D0** | Foundations aligned | 2026-11-30 | Every component follows the shared model and pins; open decisions closed; idle projects restarted | ADRs 0002–0004, 0008, 0009 decided; component repos link the umbrella; GMNS port spec and ontology files committed; Turnpoint goal revised |
 | **D1** | The AI-built enterprise, running | 2027-03-31 | **Layer 1, realistic:** an enterprise model synthesized from public doctrine with AI, every element traced to a source or marked representative; agents operating in it under granted authority | ENCAP Phases 2–3 (doctrine synthesis, operating model from ENSIM); AOC-DFO v1.0 (AOC data flows); ENSIM realism audit of Mission 1; Aircrew-LangChain Phases 1–2 (mission order from ENSIM, authorization); simulation-interface ADR |
-| **D2** | At scale, over a realistic network | 2027-08-31 | **Layer 1, at scale:** concurrent missions and multiple agent instances per role, communicating over a simulated degraded network, with acquisition processes running in the same enterprise; cost and fidelity measured as scale grows | GMNS Python port (M1) coupled to the simulations; ENSIM Missions 1–3 concurrently and acquisition missions; Aircrew-LangChain Phases 3–5 (context cards, evaluation, ENSIM Mission 1) |
+| **D2** | At scale, over a realistic network | 2027-08-31 | **Layer 1, at scale:** concurrent missions and multiple agent instances per role, communicating over a simulated degraded network, with acquisition processes running in the same enterprise; cost and fidelity measured as scale grows | GMNS MATLAB network layer (M1) coupled to the simulations over the simulation interface (ADR 0011); ENSIM Missions 1–3 concurrently and acquisition missions; Aircrew-LangChain Phases 3–5 (context cards, evaluation, ENSIM Mission 1) |
 | **D3** | AI in the enterprise: grounded and on the record | 2027-12-15 | **Layer 2, reliable, secure, traceable:** cited answers about the simulated and real enterprise; scope enforced; every agent decision a replayable trace; graph vs vector evidence | KB Phases 0–4; ENCAP Phases 4–5 and KB integration (ADR 0009); decision traces from D1–D2 imported; AOC-DFO mission-thread layer aligned with the KB |
-| **D4** | AI in operations: plan to AOC over a degraded network | 2028-05-31 | **Layer 2, safe at the operational level:** Turnpoint plans unmanned missions and hands them to the AOC as UCI messages over GMNS; humans approve through the ENCAP console | Turnpoint unmanned planning and AOC handoff; GMNS UCI profile (M2); UCI mapped to AOC-DFO classes; ENCAP Phase 6 console |
+| **D4** | AI in operations: plan to AOC over a degraded network | 2028-05-31 | **Layer 2, safe at the operational level:** Turnpoint plans unmanned missions and hands them to the AOC as UCI messages over GMNS; humans approve through the ENCAP console | Turnpoint unmanned planning and AOC handoff; GMNS MATLAB UCI profile (M2, ADR 0011); UCI mapped to AOC-DFO classes; ENCAP Phase 6 console |
 | **D5** | Closed loop | 2028-10-31 | **The single vision:** mission results return to the graph as evidence against the original requirement; scale pushed toward the far-horizon mission volume | KB evidence links; C2SIM gateway or the interface chosen in the ADR |
 
 ## Timeline
@@ -91,11 +91,11 @@ gantt
 
   section GMNS
   Commit port spec, ontology files  :gm0, 2026-11-01, 2026-11-30
-  Core port (M1)                    :gm1, 2026-12-01, 2027-04-30
+  MATLAB network layer ready (M1)   :gm1, 2026-12-01, 2027-04-30
   Couple to simulations             :gm2, 2027-05-01, 2027-08-15
   Semantic layer, CCO 2.2 migration :gm3, 2027-08-16, 2027-10-31
-  UCI profile and codec (M2)        :gm4, 2027-11-01, 2028-03-31
-  C2SIM gateway                     :gm5, 2028-04-01, 2028-09-30
+  MATLAB UCI profile and codec (M2) :gm4, 2027-11-01, 2028-03-31
+  MATLAB C2SIM gateway              :gm5, 2028-04-01, 2028-09-30
 
   section Knowledge base
   Phase 0 Foundations               :kb0, 2027-05-01, 2027-05-31
@@ -122,7 +122,7 @@ Status was checked against each repo on 2026-10-25.
 | **AOC-DFO** | Requirements v1.1 approved; Phase 0 done (8 of 64 tasks) | Phases 1–4 | D1: AOC data flows (v1.0). D3: mission-thread layer aligned with the KB. D4: message classes for UCI |
 | **ENCAP** | Phases 0–1 done; Phase 2 synthesis agent built, gate run on real doctrine; last commit 2026-09-20 | Close the Phase 2 gate | D1: doctrine synthesis and the operating model (Phases 2–3). D3: index, access control, KB integration. D4: console |
 | **Aircrew-LangChain** | Phase 0 done (baseline run); plan v0.1 proposed | Phase 1: mission order and identity | D1: agents operating under authority. D2: ENSIM Mission 1 with context cards. **On the critical path for D1–D2** |
-| **GMNS** | MATLAB only; last commit 2026-06-24; Python port spec drafted in chat, not committed; ontology files not in the public repo | Commit the port spec and ontology files | D2: the network layer the simulations communicate over. D4: UCI. D5: C2SIM. **On the critical path for D2, and the largest schedule risk** |
+| **GMNS** | MATLAB authoritative and actively developed (`+fabric`, `+data`, `+security`, Phase 10–11); port spec and ontology committed on branch `specs/python-port`; Python port deferred (GMNS Amendment A3 / ADR 0011) | Build UCI profile and C2SIM gateway in MATLAB; couple the MATLAB network layer over the simulation interface | D2: the network layer the simulations communicate over. D4: UCI. D5: C2SIM. **On the critical path for D2/D4; the network layer largely exists, so the risk shifts from the port to the native UCI/C2SIM builds** |
 | **Knowledge base** | Spec only; no repo | Repo and Phase 0 (May 2027) | D3: knowledge graph, graph tools, decision-trace store, evaluation |
 | **Turnpoint** | Phases 1–3 done; class airspace added 2026-10-10 | Goal revision for unmanned aircraft | D4: unmanned planning and the AOC handoff |
 
@@ -136,7 +136,7 @@ flowchart LR
   EN0[ENSIM realism audit] --> D1
   AL2[Aircrew Phases 1-2] --> D1
   SIM --> D1
-  GP[GMNS core port] --> GMC[GMNS coupled to simulations]
+  GP[GMNS MATLAB network layer] --> GMC[GMNS coupled to simulations]
   D1 --> GMC
   SIM --> GMC
   GMC --> D2((D2))
@@ -157,8 +157,11 @@ flowchart LR
   together; D2 adds GMNS. ENSIM federates over HLA (Portico), GMNS plans C2SIM, and Aircrew-LangChain
   uses its own format. C2SIM is often carried over HLA, so the answer is likely a combination. It must
   be decided by January 2027.
-- **GMNS is the largest schedule risk.** It is idle since June, its port spec is not committed, and D2
-  depends on it. The port is also the largest single build in the plan.
+- **GMNS risk has shifted, not vanished (ADR 0011).** The Python port is deferred and MATLAB is
+  authoritative, so there is no large port to build and the D2 network layer largely exists today —
+  which removes the port as the single largest build. The remaining GMNS risk is the **native MATLAB
+  UCI profile (M2) and C2SIM gateway**, on the D4/D5 critical path, plus coupling the MATLAB layer over
+  the simulation interface. Real work, but incremental on a live codebase rather than a rewrite.
 - **ENSIM and Aircrew-LangChain carry D1 and D2.** Both are on the critical path for the whole first
   layer.
 - **The KB and ENCAP are no longer on the early critical path.** That buys time for ADR 0009 and the
@@ -175,7 +178,7 @@ flowchart LR
 | **Scale costs money** | Live agent runs cost about $2 each today (Aircrew-LangChain baseline); D2 multiplies agents and missions | Aircrew-LangChain Phase 3 (context cards, sleep) before D2; measure cost per mission at each scale step |
 | ENCAP and the KB build the same index and access model | Duplicated work | ADR 0009 at D0 |
 | ENCAP's operating model sits outside the shared model | Breaks ADR 0005 | Map operating-model types to the shared ontology during ENCAP Phase 3 |
-| GMNS CCO 1.x to 2.2 migration | GMNS ontology cannot join the shared model until done | Commit GMNS ontology files with the port spec |
+| GMNS CCO 1.x to 2.2 migration | GMNS ontology cannot join the shared model until done | Done: ontology on the shared CCO 2.2 pin, committed on branch `specs/python-port` (GMNS #7) |
 
 ## Capacity and priority
 
