@@ -38,7 +38,7 @@ component), with purpose-built apps and agents on top. One demonstration thread 
 | ENSIM | Test enterprise for evaluation | Missions 1–3 modeled; Mission 1 runs | [ENSIM](https://github.com/semanticarchitectures/ENSIM) |
 | Aircrew-LangChain | LangGraph agents; first decision-trace host | Baseline done; Phase 1 next | [Aircrew-LangChain](https://github.com/semanticarchitectures/Aircrew-LangChain) |
 | Turnpoint | Mission planning tool agents call over MCP; unmanned planning next | Phases 1–3 done | [turnpoint](https://github.com/semanticarchitectures/turnpoint) |
-| GMNS | Network transport and C2 messaging testbed (UCI, planned C2SIM) | MATLAB; Python port spec not yet committed | [GlobalMobileNetworkSim](https://github.com/semanticarchitectures/GlobalMobileNetworkSim) |
+| GMNS | Network transport and C2 messaging testbed (UCI, planned C2SIM) | MATLAB authoritative; UCI/C2SIM built natively (ADR 0011); Python port deferred | [GlobalMobileNetworkSim](https://github.com/semanticarchitectures/GlobalMobileNetworkSim) |
 
 Dependency rules: [.kiro/steering/portfolio.md](.kiro/steering/portfolio.md).
 
