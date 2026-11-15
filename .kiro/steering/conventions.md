@@ -21,6 +21,14 @@ When requirements change, update `requirements.md` first, then refine `design.md
 Spec status lives in `docs/specs-index.md`: Draft, Requirements approved, Design approved,
 In progress, Done, Moved.
 
+**Specs live in `.kiro/specs/`, in every repo.** This is the single spec home across the
+portfolio (ADR 0001: a spec internal to one component lives in that repo's `.kiro/specs/`).
+A repo's `docs/` holds narrative architecture only; agents do not create a parallel spec
+location such as `docs/specs/`. Existing content in another location is conformed to
+`.kiro/specs/` by moving its location and shape, not by rewriting its substance; content that
+does not split into requirements/design/tasks stays as `docs/architecture/` narrative that a
+thin spec references.
+
 ## EARS patterns
 
 | Pattern | Form |
@@ -40,6 +48,15 @@ Name the actual component instead of "the system" when the requirement belongs t
   reference architecture.
 - Status: Proposed, Accepted, Superseded by NNNN.
 - An ADR lists the options considered and the consequences, including the bad ones.
+- **Two tiers, one format and location.** A decision that crosses a component boundary, changes a
+  shared contract, or departs from the reference architecture is an **umbrella** ADR, in this
+  repo's `docs/adr/`. A decision internal to one component is a **component** ADR, in that repo's
+  own `docs/adr/`, in the identical format and its own number sequence. Both live in `docs/adr/`
+  (not `docs/decisions/` or any other name). Not every choice is an ADR: a routine, easily
+  reversed, component-local pick is a code comment, not a record. A repo with no ADRs yet is fine.
+- **Cite ADRs with the repo named**, because the two tiers number independently and numbers
+  collide: write "AKS ADR 0011" for an umbrella ADR and "GMNS ADR 0003", "Turnpoint ADR 0007"
+  for a component ADR. Never a bare "ADR 7".
 
 ## Project-family rules (apply in every component)
 
