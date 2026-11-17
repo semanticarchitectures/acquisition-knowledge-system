@@ -25,3 +25,4 @@ Statuses: Draft, Requirements approved, Design approved, In progress, Done, Move
 | [0009](adr/0009-encap-owns-index-and-access-model.md) | ENCAP owns passage index and access model; KB owns the graph | Accepted |
 | [0010](adr/0010-gmns-message-classes-align-to-aoc-dfo.md) | GMNS keeps its message classes; aligns them to AOC-DFO later | Accepted |
 | [0011](adr/0011-gmns-stays-matlab-uci-c2sim-native.md) | GMNS stays MATLAB; UCI/C2SIM built natively; Python port deferred | Accepted (amends 0007, 0008) |
+| [0012](adr/0012-aks-simulation-interface.md) | AKS simulation interface: HLA transport now, C2SIM/UCI content profile at D4/D5 | Accepted |
