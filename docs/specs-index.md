@@ -7,6 +7,7 @@
 | [decision-traces](../.kiro/specs/decision-traces/requirements.md) | Context graph: decision trace schema and capture paths | Knowledge base, Aircrew-LangChain, ENSIM | Tasks approved (2026-11-11); in progress |
 | [ensim-acquisition-missions](../.kiro/specs/ensim-acquisition-missions/requirements.md) | Acquisition mission set for evaluation | ENSIM | Draft (requirements only) |
 | [aoc-dfo](https://github.com/semanticarchitectures/aoc-dfo/tree/main/.kiro/specs/aoc-dfo) (in component repo) | AOC data flow ontology, mission-thread layer, KB alignment target | AOC-DFO | Design approved (v1.1 requirements 2026-10-24; design and tasks 2026-11-11); Phase 0 scaffolding done |
+| [simulation-interface](../.kiro/specs/simulation-interface/requirements.md) | D2 simulation interface: HLA transport + C2SIM-shaped JSON envelope (ADR 0012) | ENSIM, GMNS, Turnpoint, Aircrew-LangChain | Draft |
 
 Statuses: Draft, Requirements approved, Design approved, In progress, Done, Moved (with link).
 
