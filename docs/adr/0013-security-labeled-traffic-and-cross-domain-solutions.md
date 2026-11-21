@@ -2,7 +2,7 @@
 
 - Status: **Proposed** (2026-11-21) — captures the decisions to make before a spec is written
 - Relates: [ADR 0007](0007-gmns-joins-aks.md) and the GMNS `matlab-network-sim` ICAM layer (identity, credential, access management); [ADR 0012](0012-aks-simulation-interface.md) (the simulation-interface envelope that will carry labels); [ADR 0005](0005-one-model-many-apps.md) (one shared model); the vision's "Secure" property (classification markings, echelon scopes, a reviewed promotion step)
-- Scope note: **representative and public only.** This models the *structure* of US Government data security — not any real classified ruleset, accreditation artifact, or control baseline.
+- Scope note: **abstract mechanism + faithfully-configured public instance.** Build a general-purpose label/policy/gateway *engine*, then load a representative, public *configuration* that mirrors the US Government data-security model. The engine knows labels, a dominance relation, and release actions; it does not hardcode any specific classification scheme. Never a real classified ruleset, accreditation artifact, or control baseline.
 
 ## Context
 
@@ -23,16 +23,31 @@ This is not greenfield. AKS already has the pieces this builds on:
   tokens, a reviewed promotion step" — this objective makes that property concrete and testable.
 - GMNS already has nodes, links, and a `+security` package (adversarial/ policy analysis).
 
-The decision direction is set (Kevin, 2026-11-21): **extend ICAM + the envelope**, and model the
-structure **faithfully but with fictional/public rules only**. What remains are the design questions
-a spec must answer, recorded here before the spec is written.
+The decision direction is set (Kevin, 2026-11-21): **extend ICAM + the envelope**, and — refined
+2026-11-21 — build an **abstract enforcement mechanism** loaded with a **faithfully-configured,
+public US Government instance**, rather than hardcoding one label set into the model. What remains
+are the design questions a spec must answer, recorded here before the spec is written.
 
 ## Decision (direction)
 
 **Model security-labeled traffic and CDS gateways as an extension of the GMNS ICAM/policy layer and
-the ADR 0012 envelope, using a representative, public label set and fictional release rules.** No
-real classification guide, control baseline, or accreditation content enters the repo (consistent
-with the handling rules already in GMNS and AOC-DFO).
+the ADR 0012 envelope, as a two-part design: a general-purpose enforcement *mechanism* and a
+representative, public *configuration* that mirrors the US Government data-security model.** No real
+classification guide, control baseline, or accreditation content enters the repo (consistent with
+the handling rules already in GMNS and AOC-DFO).
+
+**Why mechanism + configuration (refined 2026-11-21).** A structure-faithful model risks being
+specific to one instantiation — a demo that shows exactly one thing and does not generalize. A
+purely abstract model risks demonstrating nothing a government reviewer recognizes. Separating the
+two resolves the tension: the *engine* (label algebra, policy decision point, release gateway) is
+reusable and testable and knows nothing about any specific scheme; the *US Government model* is a
+public, representative configuration loaded into it (the label set, the dominance rules, the CDS
+release policies). This is also **how real MLS/cross-domain systems are built** — the reference
+monitor / guard is separate from the accreditor-approved policy it enforces — so the separation is
+*more* faithful to the real architecture, not less. It lets the demonstration show the same engine
+under more than one configuration (the US Government representative set; a coalition or commercial
+variant), which is a stronger capability story for both a government sponsor and a partner than a
+single hardwired lattice.
 
 Shape of the model (to be specified, not fixed here):
 - **Labels on traffic.** Each C2 message / traffic stream carries a handling label: a broad level
@@ -52,10 +67,15 @@ Shape of the model (to be specified, not fixed here):
 
 ## Open questions (the spec must decide these)
 
-1. **MAC vs. ABAC.** Are labels enforced as a **mandatory** lattice (Bell–LaPadula: no read-up, no
-   write-down, a formal dominance relation) or as **attribute-based** policy (the ICAM engine's
-   current style)? Real classification is mandatory; GMNS's ICAM is attribute-based. The spec must
-   choose, or define how a lattice overlays the ABAC engine. *This is the central design question.*
+1. **Enforcement model: both, as configurations (refined 2026-11-21).** The mechanism/configuration
+   split reframes what was the central either/or (mandatory lattice vs. attribute-based). The
+   direction: the **engine supports both as policy configurations** — a mandatory lattice
+   (Bell–LaPadula: no read-up, no write-down, a formal dominance relation) is one configuration;
+   attribute-based policy (GMNS ICAM's current style) is another. The **US Government instance is a
+   hybrid**, because real handling is: classification *levels* are mandatory (a lattice), while
+   data-type *caveats* and need-to-know (PII, HIPAA, FOUO) behave more like attributes. The spec
+   must specify how the lattice and the attribute rules compose in one policy decision — this is now
+   the central design question, in its sharper form.
 2. **Label model.** How many broad levels, which representative caveats, and how caveats compose
    (e.g., SECRET//PII). Define the label algebra (dominance, combination, the "high-water mark" of a
    derived message).
@@ -88,15 +108,18 @@ Shape of the model (to be specified, not fixed here):
 
 - A new umbrella objective and vision entry (makes the "Secure" property concrete).
 - A future `.kiro/specs/security-labeled-traffic/` spec (cross-cutting; enforcement lands in GMNS),
-  gated on resolving the open questions above — especially Q1 (MAC vs. ABAC).
+  gated on resolving the open questions above — especially Q1 (how the mandatory lattice and the
+  attribute rules compose in the engine).
 - Envelope extension (ADR 0012): label fields, to be added in the follow-on, not retrofitted now.
 - Connects to ADR 0014 (Foundry): labeled data ingested and enriched must carry labels through.
 
 ## Alternatives considered
 
-| Option | Why not (now) |
+| Option | Verdict |
 | --- | --- |
+| **Abstract mechanism + faithfully-configured public instance** | **Chosen (refined 2026-11-21).** The engine is general-purpose and reusable; the US Government model is a public, representative configuration it loads. Resolves the structure-faithful-vs-abstract tension, mirrors how real MLS/CDS systems separate guard from policy, and lets the demo show more than one configuration. |
+| Structure-faithful only (hardcode the US Govt label set/CDS semantics into the model) | Superseded by the chosen option: faithful but specific to one instantiation — a demo that generalizes poorly and a reusable capability lost. Kept as the *configuration* half of the chosen option, not the whole model. |
+| Purely abstract mechanism, US Govt as just one unspecified instance | Superseded: the objective specifically asks to mirror the US Govt approach (PII/HIPAA/FOUO/SECRET, CDS). The chosen option keeps the abstract engine *and* delivers a recognizable US Govt instance, rather than leaving it unspecified. |
 | New standalone security subsystem, loosely coupled to GMNS | Rejected (Kevin): duplicates the ICAM identity/policy work already specified; labels and QoS belong on the traffic GMNS already models. |
-| Abstract multi-level-security mechanism, US Govt as just one instance | Reasonable, but the objective specifically asks to mirror the US Govt approach (PII/HIPAA/FOUO/SECRET, CDS); model that structure directly, kept public. |
 | Deep real-doctrine mapping (ICD 503, Raise-the-Bar, real control baselines) | Rejected: crosses the public-only guardrail and risks producing something mistakable for real accreditation content. |
-| Write the full spec now | Rejected (Kevin): the MAC-vs-ABAC question (Q1) is a real decision; specifying before deciding repeats the drift pattern. Objective + this ADR first. |
+| Write the full spec now | Rejected (Kevin): the enforcement-model question (Q1) is a real decision; specifying before deciding repeats the drift pattern. Objective + this ADR first. |

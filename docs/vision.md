@@ -131,9 +131,12 @@ network and C2 traffic. Model **gateways between networks that mirror US Governm
 Solutions (CDS)** and the requirements for securely sharing approved data across domains. This
 extends the GMNS ICAM/policy layer and the [ADR 0012](adr/0012-aks-simulation-interface.md) message
 envelope rather than standing up a new subsystem, and makes the vision's **Secure** property
-concrete and testable. **Representative and public only** — fictional label sets and release rules,
-never real classification guidance or accreditation content. Decisions and open questions (chiefly
-mandatory-lattice vs. attribute-based enforcement) are in
+concrete and testable. The design is an **abstract enforcement mechanism** loaded with a **faithful,
+public US Government configuration** — a reusable engine (label algebra, policy point, release
+gateway) that mirrors how real cross-domain systems separate the guard from its approved policy, kept
+**representative and public only** (fictional label sets and release rules, never real classification
+guidance or accreditation content). Decisions and open questions (chiefly how a mandatory lattice and
+attribute-based rules compose, since real handling is a hybrid) are in
 [ADR 0013](adr/0013-security-labeled-traffic-and-cross-domain-solutions.md).
 
 ### Palantir Foundry as an operator-facing consumer
