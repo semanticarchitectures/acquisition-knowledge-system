@@ -135,8 +135,10 @@ concrete and testable. The design is an **abstract enforcement mechanism** loade
 public US Government configuration** — a reusable engine (label algebra, policy point, release
 gateway) that mirrors how real cross-domain systems separate the guard from its approved policy, kept
 **representative and public only** (fictional label sets and release rules, never real classification
-guidance or accreditation content). Decisions and open questions (chiefly how a mandatory lattice and
-attribute-based rules compose, since real handling is a hybrid) are in
+guidance or accreditation content). The design decisions are resolved (2026-11-22): a mandatory
+level lattice gates attribute-based caveat rules (deny-overrides), derived data takes the high-water
+mark, CDS holds need **two-entity** review (any two distinct people or AI agents), and labels are
+shared-ontology terms whose rules live in the configuration — see
 [ADR 0013](adr/0013-security-labeled-traffic-and-cross-domain-solutions.md).
 
 ### Palantir Foundry as an operator-facing consumer
