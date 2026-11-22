@@ -62,7 +62,7 @@ all nodes in the same graph, linked by cited relationships.
 | Concept and requirements | Enterprise needs and policy (KB L0–L2, ENSIM enterprise) | Mission needs at the AOC (AOC-DFO) | Not applicable |
 | Acquisition and development | Portfolio and funding decisions (KB L3, decision traces) | Program office execution (KB L4, ENCAP agents) | Software built against traced requirements (spec-driven development) |
 | Production and fielding | Fielding decisions | Integration with the AOC (AOC-DFO interface) | Released planning software (Turnpoint) |
-| Operations and feedback | Lessons into policy and portfolio | Unmanned mission tasking and deconfliction with the AOC; C2 traffic under degraded comms (GMNS) | Mission plans executed in simulation (Aircrew-LangChain, ENSIM) |
+| Operations and feedback | Lessons into policy and portfolio | Unmanned mission tasking and deconfliction with the AOC; C2 traffic under degraded comms (GMNS); operator-facing analysis of simulation data in Palantir Foundry ([ADR 0014](adr/0014-palantir-foundry-integration.md)) | Mission plans executed in simulation (Aircrew-LangChain, ENSIM) |
 
 ## The demonstration thread
 
@@ -117,6 +117,39 @@ outcome through GMNS; attach notional costs.
 **Limits.** Results are only as valid as the simulation, so the realism evidence planned for D1
 matters more here. Public cost data is coarse, typically at program-element level.
 
+## Additional objectives
+
+*Added 2026-11-21 (Kevin). Both are high-level objectives captured as Proposed ADRs; specs follow
+once their open questions are decided (the AKS decision-first method).*
+
+### Security-labeled traffic and Cross Domain Solutions
+
+Model network traffic streams whose **identity defines both security requirements and quality of
+service**, mirroring the US Government data-security approach: broad levels plus data-type
+restrictions (representative analogues of PII, HIPAA, FOUO, SECRET), access control, and QoS on
+network and C2 traffic. Model **gateways between networks that mirror US Government Cross Domain
+Solutions (CDS)** and the requirements for securely sharing approved data across domains. This
+extends the GMNS ICAM/policy layer and the [ADR 0012](adr/0012-aks-simulation-interface.md) message
+envelope rather than standing up a new subsystem, and makes the vision's **Secure** property
+concrete and testable. The design is an **abstract enforcement mechanism** loaded with a **faithful,
+public US Government configuration** — a reusable engine (label algebra, policy point, release
+gateway) that mirrors how real cross-domain systems separate the guard from its approved policy, kept
+**representative and public only** (fictional label sets and release rules, never real classification
+guidance or accreditation content). Decisions and open questions (chiefly how a mandatory lattice and
+attribute-based rules compose, since real handling is a hybrid) are in
+[ADR 0013](adr/0013-security-labeled-traffic-and-cross-domain-solutions.md).
+
+### Palantir Foundry as an operator-facing consumer
+
+Ingest AKS simulation data into **Palantir Foundry** (free Developer Edition), process it into new
+information, and let a human operator view and manipulate it through Foundry. This sits at the
+**operations-and-feedback** edge (the D5 closed loop made concrete with a widely-used government data
+platform): one-directional (sim → Foundry, nothing flows back), carrying ADR 0013 handling labels
+through, and reconciling with the AKS shared ontology ([ADR 0005](adr/0005-one-model-many-apps.md))
+rather than becoming a parallel model. Decisions and open questions (Developer Edition limits,
+Ontology reconciliation, the boundary with ENCAP's console) are in
+[ADR 0014](adr/0014-palantir-foundry-integration.md).
+
 ## Safe, secure and reliable: properties the demonstration must show
 
 These are claims the demonstration must back with evidence, not adjectives. Risk classification and
@@ -125,7 +158,7 @@ reliability criteria come from the AFMC AI governance policy (v2).
 | Property | What the demo must show | Mechanism |
 | --- | --- | --- |
 | **Safe** | AI never acts beyond the authority it was granted. Humans keep decision authority. Autonomy stays inside a defined envelope | Governed envelope, authorization by role, two-person control, outputs labeled as decision support |
-| **Secure** | Data never crosses a boundary without review. Every client sees only its scope | Classification markings, echelon scopes, scoped tokens, a reviewed promotion step |
+| **Secure** | Data never crosses a boundary without review. Every client sees only its scope | Classification markings, echelon scopes, scoped tokens, a reviewed promotion step; and, at the network layer, security-labeled traffic streams and Cross Domain Solution gateways ([ADR 0013](adr/0013-security-labeled-traffic-and-cross-domain-solutions.md), representative and public) |
 | **Reliable** | Answers are cited and checked. Gaps are declared, not filled in. Changes do not cause silent regressions | CQ golden tests, citation faithfulness checks, evaluation against ENSIM, pinned models and prompts |
 | **Traceable** (the means to all three) | Every decision, by person or agent, can be replayed: who, under what authority, using what | Decision traces, provenance, call logs |
 | **Realistic** (layer 1) | The simulated enterprise behaves the way practitioners know the real one does | Every model element traced to a public source or marked representative; comparison against documented operations (for example the Operation Damayan pattern behind ENSIM Mission 1); review by Air Force and contractor practitioners |
