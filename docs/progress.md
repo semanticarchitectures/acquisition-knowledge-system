@@ -3,7 +3,7 @@
 - Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
 - Capacity: Kevin at half time, directing AI coding agents. Working rule (2026-11-08): at most about
   three unmerged results waiting for review, and a standing weekly review session
-- Updated: 2026-11-11
+- Updated: 2026-11-22
 
 The baseline dates never change. **Forecast** is the current best estimate; **status** is one of
 On track, At risk, Late, Done. Each weekly update adds a log entry and revises the tables.
@@ -12,9 +12,9 @@ On track, At risk, Late, Done. Each weekly update adds a log entry and revises t
 
 | ID | Milestone | Baseline | Forecast | Status | Note |
 | --- | --- | --- | --- | --- | --- |
-| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | On track | All open ADRs decided; all seven PRs merged 2026-11-11; remaining: AOC-DFO restart is a D1 item |
-| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 merged 2026-11-11 (108 tests pass on main); Phase 2 unblocked; ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started |
-| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | GMNS port spec, ontology and CCO 2.2 pin merged 2026-11-11; Python port **deferred** (GMNS Amendment A3 / ADR 0011) — MATLAB authoritative, network layer couples over the simulation interface; risk shifts to native MATLAB UCI/C2SIM |
+| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | On track | Architecture settled: ADRs 0001–0013 Accepted (0014 Foundry Proposed); spec/ADR conventions unified (PR #3); simulation-interface and security-labeled-traffic specs written. Remaining: AOC-DFO restart is a D1 item |
+| D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 merged 2026-11-11 (108 tests pass on main); Phase 2 unblocked; ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started (the near-term schedule risk) |
+| D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | Simulation interface **decided (ADR 0012) and specced** — HLA transport + C2SIM-shaped JSON envelope; `simulation-interface` spec Draft. Python port **deferred** (GMNS A3 / ADR 0011): MATLAB authoritative; risk shifts to native MATLAB UCI/C2SIM and the component adapters |
 | D3 | AI in the enterprise | 2027-12-15 | 2028-03-31 | At risk | Follows D2 |
 | D4 | Plan to AOC over a degraded network | 2028-05-31 | 2028-08-31 | At risk | Follows D3 |
 | D5 | Closed loop | 2028-10-31 | 2029-01-31 | At risk | Follows D4 |
@@ -36,17 +36,20 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
       requirements approved 2026-11-06, design approved 2026-11-07, tasks proposed (approval needed
       before Aircrew-LangChain Phase 2)
 - [x] ADR 0010 accepted (2026-11-06): GMNS keeps its message classes, aligns to AOC-DFO later
+- [x] GMNS reconciled to reality (2026-11-14): Amendment A3 — MATLAB authoritative, Python port deferred (GMNS #8); umbrella ADR 0011 records it
+- [x] Simulation interface decided and specced (2026-11-16/18): ADR 0012 Accepted; `simulation-interface` spec merged (umbrella PR #5)
+- [x] Spec/ADR conventions unified (2026-11-14): single `.kiro/specs/` home + two-tier ADR scheme, repo-qualified citations (umbrella PR #3)
+- [x] Security-labeled traffic + CDS decided (2026-11-21/22): ADR 0013 Accepted (D1–D7: engine + public US Govt config, lattice-then-ABAC, two-entity review); `security-labeled-traffic` Design approved 2026-11-22
+- [ ] Palantir Foundry integration: ADR 0014 **Proposed**; gated on Developer Edition limits and the shared-ontology reconciliation before a spec
 
 ## Active streams
 
 | Stream | Component | Baseline window | State |
 | --- | --- | --- | --- |
-| D0 decisions and quick starts | Umbrella, Turnpoint, GMNS | 2026-10-27 to 2026-11-30 | Active: GMNS items done on branches; reviews and decisions pending |
-| AOC-DFO Phases 1–4 | AOC-DFO | 2026-10-26 to 2026-12-31 | Behind: 8 of 64 tasks done (Phase 0); only design 3.7 for ADR 0010 since 2026-10-24 |
-| Aircrew-LangChain Phase 1 (mission order, identity) | Aircrew-LangChain | 2026-11-01 to 2026-12-31 | Active: chosen 2026-11-06; built the same day on branch `phase-1/mission-order`, gate passed; merge pending |
-
-Note (2026-11-08): GMNS work (PR #7 merged into `specs/python-port`) has continued during
-November, so four streams are in practice active against a cap of three.
+| AOC-DFO Phases 1–4 | AOC-DFO | 2026-10-26 to 2026-12-31 | Behind: ~8 of 64 tasks (Phase 0) as of last check; Phases 1–4 not started. **The near-term schedule risk.** |
+| Aircrew-LangChain Phase 2 | Aircrew-LangChain | 2026-11-01 to 2026-12-31 | Unblocked (Phase 1 merged 2026-11-11, 108 tests pass); decision-trace tasks 1–5 land here |
+| Simulation-interface build-out | Umbrella + ENSIM/GMNS/Turnpoint/Aircrew | from 2026-11-18 | Spec Draft; component adapters (ENSIM sim-services, GMNS federate shim, Python adapters) next |
+| Security-labeled-traffic build-out | GMNS + umbrella/AOC-DFO/ENCAP | from 2026-11-22 | Design approved; tasks PR open; GMNS ICAM enforcement + label schema next |
 
 ## Log
 
@@ -136,3 +139,47 @@ November, so four streams are in practice active against a cap of three.
 - Accepted: ADRs 0002, 0003, 0004 (option C), 0008 (option A). Approved: `decision-traces` tasks.
 - Review queue now empty. D0 back on track. Next per the plan: AOC-DFO Phases 1–4 and ENSIM's Mission 1
   realism audit (with use case UC-LOG-01); Aircrew-LangChain Phase 2 is unblocked.
+
+### Week of 2026-11-16 — GMNS reconciliation, conventions, simulation interface
+
+- **GMNS reconciled to reality.** A review of the GMNS repo found the Python port had never started
+  while the MATLAB codebase had grown substantially (new `+fabric`, `+data`, `+security` packages;
+  Phase 10–11 work), yet GMNS's `CLAUDE.md` still asserted "Python is authoritative." Corrected by
+  **Amendment A3** (GMNS #8, merged): MATLAB is the authoritative, actively-developed implementation;
+  the Python port is deferred and re-scopable. Umbrella **ADR 0011** records the same decision; the
+  UCI/C2SIM capabilities are built natively in MATLAB (not in the deferred port).
+- **Spec/ADR conventions unified** (umbrella PR #3, merged): the portfolio already mandated
+  `.kiro/specs/` and `docs/adr/NNNN`, but four repos diverged. `conventions.md` now states the single
+  spec home and a two-tier ADR scheme (umbrella for cross-cutting, component-local for internal) with
+  repo-qualified citations ("AKS ADR 0011", "Turnpoint ADR 0007"). Mechanical conformance of the
+  divergent repos follows as separate PRs.
+- **Simulation interface decided and specced (D2's first gate).** **ADR 0012** (Accepted): the
+  interface is two layers — an HLA federation (Portico 2.1.4, via ENSIM's existing JSON-over-stdio
+  `federation-kernel` boundary) for transport now, carrying a C2SIM-shaped JSON envelope that
+  converges on SISO C2SIM/UCI at D4/D5. This reuses ENSIM's working, verified federation rather than
+  rebuilding, and does not block D2 on the (2028) C2SIM gateway. The `simulation-interface` spec
+  (umbrella PR #5, merged) turns it into buildable requirements/design/tasks, grounded in ENSIM's real
+  boundary and five `c2-interfaces` message types plus Aircrew's `mission-order` format. Component
+  adapters are the next build work, each owned in its component repo.
+
+### Week of 2026-11-22 — security-labeled traffic + CDS; Foundry objective
+
+- **Two high-level objectives added** (Kevin, 2026-11-21), as Proposed ADRs first (decision-first
+  method): security-labeled traffic + Cross Domain Solutions, and Palantir Foundry integration.
+- **ADR 0013 (security-labeled traffic + CDS) Accepted (2026-11-22).** Model traffic whose identity
+  defines both security handling and QoS, with CDS gateways between network domains — as a
+  general-purpose label/policy/release-gateway **engine** plus a representative, public **US Government
+  configuration** (the fidelity decision was refined from "structure-faithful" to "abstract mechanism +
+  faithful public instance," mirroring how real MLS/CDS systems separate the guard from approved
+  policy). Enforcement resolved to **lattice-then-ABAC with two-entity review**; it extends GMNS's
+  existing ICAM `PolicyDecisionPoint`. Guardrail: representative and public only, never real
+  classification or accreditation content. `security-labeled-traffic` spec **Design approved
+  2026-11-22**; tasks PR open.
+- **ADR 0014 (Palantir Foundry) Proposed.** Ingest simulation data into Foundry (free Developer
+  Edition), enrich it, and let an operator view/manipulate it — one-directional (sim → Foundry),
+  carrying ADR 0013 labels through, reconciling with the shared ontology (ADR 0005). Gated before a
+  spec on two unknowns: what the Developer Edition permits (limits + license terms), and whether
+  Foundry's Ontology is a projection of the shared model or a parallel one.
+- **Housekeeping:** this file had lagged the merged state (it predated ADRs 0011–0014 and the new
+  specs); refreshed against the repositories' current `main`. Open PRs at this update:
+  `security-labeled-traffic` tasks, and a shared-citation-form ADR.
