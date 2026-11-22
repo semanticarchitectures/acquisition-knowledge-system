@@ -29,7 +29,7 @@ Grounding (read at GMNS `main` 4fffc02, 2026-11-14, and AKS `main`, 2026-11-22):
 - GMNS **Enclaves** are named security domains with their own policy and trust anchors; an Entity
   (human or Non_Person_Entity, including AI agents) holds Role_Bindings in one or more Enclaves.
 - GMNS has no QoS model (no priority, latency class, or bandwidth reservation on traffic) — see
-  open question O3.
+  R9 (resolved as O3).
 - The D2 envelope (`simulation-interface` design) carries `envelopeVersion` (`"d2.1"`), `id`,
   `messageType`, `timestamp`, `missionId`, `producedBy`, `doctrineSource[]`, `source`, `destination`.
 
@@ -90,11 +90,14 @@ order, a caveat with no type, or a CDS policy that references an unknown domain.
 
 2.5. THE SYSTEM SHALL ship the **US Government configuration** with: four levels representing
 UNCLASSIFIED < CUI < SECRET < TOP SECRET; handling caveats PII and PHI; one releasability caveat
-`REL-PARTNER`; lattice gate on; two-entity review (R8). FOUO SHALL NOT appear as a separate term;
-it is folded into the CUI analogue (D2).
+`REL-PARTNER`; lattice gate on; two-entity review (R8) with N = 2 and `agentsMustDiffer` on; and
+the lowest level (the UNCLASSIFIED analogue) as the default label for unlabeled traffic (R5.4).
+FOUO SHALL NOT appear as a separate term; it is folded into the CUI analogue (D2).
 
-2.6. THE SYSTEM SHALL ship **one second configuration** (coalition or commercial — see O2) that
-runs on the same engine with no code change, as the proof of the engine/policy split.
+2.6. THE SYSTEM SHALL ship a second, **coalition** configuration that runs on the same engine with
+no code change, as the proof of the engine/policy split. It SHALL declare at least three
+releasability caveats with overlapping partner sets, so the scenario exercises the intersection rule
+(R1.3) that the US Government configuration touches only once.
 
 2.7. EVERY display name in a shipped configuration SHALL carry the marker `SIM`, and every label
 rendered by any AKS component (logs, reports, consoles) SHALL show it.
@@ -167,7 +170,8 @@ lowered it.
 5.3. THE envelope SHALL gain an optional `approvals` list of review events (R8.3).
 
 5.4. WHEN a message has no `label`, THE engine SHALL apply the configuration's declared default
-label (see O1), and SHALL record that the default was applied.
+label, and SHALL record in the Event_Log and Statistics_Report that the default was applied, so
+`"d2.1"` traffic keeps flowing and its unlabeled share stays visible.
 
 5.5. THE `simulation-interface` C2SIM mapping table SHALL gain a row per new field, flagged as an
 open mapping question where C2SIM has no construct.
@@ -241,25 +245,29 @@ and SHALL be attached to the released message's `approvals` list.
 8.4. ANY single **reject** SHALL deny the transfer.
 
 8.5. THE engine SHALL count two entities as distinct WHEN their ICAM identities differ;
-WHERE the configuration sets `agentsMustDiffer` THE engine SHALL additionally require two agent
-reviewers to declare different `model` values. (Whether the US Government configuration sets it
-is O4.)
+WHERE the configuration sets `agentsMustDiffer` THE engine SHALL additionally require any two agent
+reviewers to declare different `model` values, so AI–AI review means two different models, not two
+instances of one.
 
 8.6. WHERE the configuration sets `requireHuman`, THE engine SHALL require at least one approval
 from a person entity.
 
-### Requirement 9 — QoS by stream identity
+### Requirement 9 — QoS by stream identity (interface only)
 
 **User Story:** As a network analyst, I want a stream's identity to carry its QoS as well as its
 label, so that security and service level are one model.
 
+GMNS has no QoS model today. This spec defines only the QoS **interface** on the stream identity;
+the router behavior that honors it is a separate GMNS component spec (`GlobalMobileNetworkSim/.kiro/specs/`),
+which this spec does not block on. The R13 acceptance scenario makes no QoS assertions.
+
 **Acceptance Criteria:**
 
-9.1. THE envelope or GMNS stream definition SHALL carry a QoS class: priority (ordinal), latency
-class, and minimum bandwidth.
+9.1. THE envelope SHALL gain an optional `qos` field carrying a QoS class: priority (ordinal),
+latency class, and minimum bandwidth.
 
-9.2. WHILE a link is congested or degraded, THE GMNS router SHALL serve higher-priority traffic
-first and SHALL record when a stream's latency class is missed.
+9.2. THE GMNS QoS component spec SHALL consume the `qos` field as defined here; WHILE that spec is
+not yet built, GMNS SHALL carry `qos` unchanged and ignore it.
 
 9.3. THE QoS class SHALL be independent of the label: THE engine SHALL NOT infer priority from
 level, and a configuration MAY map labels to default QoS classes explicitly.
@@ -325,23 +333,34 @@ configuration file changed, and its assertions SHALL be stated per configuration
 
 13.4. Existing GMNS ICAM tests SHALL pass unchanged (R3.7).
 
-### Open questions (flagged, not decided here)
+### Resolved questions (Kevin, 2026-11-22)
 
-- **O1 — Default label for unlabeled traffic** in the US Government configuration: lowest level
-  (keeps D2 `"d2.1"` traffic flowing) or reject unlabeled traffic once a configuration is loaded
-  (safer, breaks D2 compatibility). Proposed: lowest level, with the default recorded per R5.4.
-- **O2 — Second configuration:** coalition (releasability-heavy, exercises `REL-*` intersection)
-  or commercial (handling-heavy, for example customer data and trade secrets). Proposed: coalition,
-  because it exercises the releasability algebra the US configuration only touches once.
-- **O3 — QoS home:** GMNS has no QoS model today. Is R9 part of this spec or a separate GMNS spec
-  this one depends on? Proposed: a separate GMNS component spec; R9 here states only the interface.
-- **O4 — `agentsMustDiffer`** in the US Government configuration: do two AI reviewers need
-  different models to count as independent? Proposed: on, so AI–AI review means two different
-  models, not two instances of one.
-- **O5 — Where the engine lives:** in GMNS `+icam` (MATLAB) only, or also as a cross-language
-  shared package so ENCAP and ENSIM can evaluate labels too. AKS ADR 0008 defers shared packages;
-  proposed: MATLAB in GMNS now, with the configuration format and test vectors in this repo as the
-  portable contract.
+Flagged in the first draft as O1–O5; the proposed answers were accepted and are folded in above.
+
+- **O1 — Default label for unlabeled traffic:** the lowest level, recorded each time (R2.5, R5.4).
+  Rejecting unlabeled traffic would break D2 `"d2.1"` compatibility.
+- **O2 — Second configuration:** coalition, to exercise releasability intersection (R2.6).
+- **O3 — QoS home:** a separate GMNS component spec; this spec defines the interface only (R9).
+- **O4 — Independent AI reviewers:** `agentsMustDiffer` on in the US Government configuration (R2.5,
+  R8.5).
+- **O5 — Where the engine lives:** MATLAB, in GMNS `+icam`, now (R14). The configuration schema,
+  the two shipped configurations, and a language-neutral set of test vectors live in this repo as
+  the portable contract; a cross-language shared package waits for AKS ADR 0008's deferred
+  packages.
+
+### Requirement 14 — Engine location and portable contract (O5)
+
+**Acceptance Criteria:**
+
+14.1. THE engine SHALL be implemented in MATLAB inside GMNS `+icam`, alongside the existing
+`PolicyDecisionPoint`.
+
+14.2. THE configuration JSON schema, the US Government and coalition configurations, and a set of
+**test vectors** (label pairs with expected join and dominance; requests with expected stage,
+decision, and reason; CDS inputs with expected action) SHALL live in this repo under this spec.
+
+14.3. THE GMNS engine SHALL pass every test vector, and any later implementation in another
+language SHALL be conformant only WHEN it passes the same vectors.
 
 ### Out of scope
 
