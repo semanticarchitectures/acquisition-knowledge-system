@@ -40,7 +40,7 @@ Shape (to be specified, not fixed here):
 - **Operator view/manipulate.** A Foundry application (Workshop/Object views) lets a human operator
   explore and act on the derived information.
 - **Labels carried through.** Data ingested under ADR 0013 handling labels keeps those labels in
-  Foundry; derived information takes the high-water-mark label (ADR 0013 Q4).
+  Foundry; derived information takes the high-water-mark label (ADR 0013 D4).
 
 ## Open questions (the spec must decide these)
 
