@@ -55,6 +55,11 @@ may see it) or **releasability** (restricts which domains or partners it may go 
 1.3. THE engine SHALL compute the **join** of two labels as: the higher level; the union of
 handling caveats; the intersection of releasability caveats.
 
+  *Clarification (design, 2026-11-22):* each releasability caveat denotes a set of partners; a
+  label with no releasability caveat is releasable to all partners. "Intersection" and "⊆" for
+  releasability (R1.3, R1.4) apply to those partner sets, so joining an unrestricted label with a
+  restricted one stays restricted.
+
 1.4. THE engine SHALL compute **dominance** as: label A dominates label B WHEN A's level ≥ B's
 level AND A's handling caveats ⊇ B's AND A's releasability caveats ⊆ B's.
 
