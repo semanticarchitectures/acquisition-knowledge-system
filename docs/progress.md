@@ -3,7 +3,7 @@
 - Baseline: [integrated plan](integrated-plan.md), commit `38ff131` (tag `plan-baseline-2026-10-26` to be added from your machine)
 - Capacity: Kevin at half time, directing AI coding agents. Working rule (2026-11-08): at most about
   three unmerged results waiting for review, and a standing weekly review session
-- Updated: 2026-11-22
+- Updated: 2026-11-24
 
 The baseline dates never change. **Forecast** is the current best estimate; **status** is one of
 On track, At risk, Late, Done. Each weekly update adds a log entry and revises the tables.
@@ -12,7 +12,7 @@ On track, At risk, Late, Done. Each weekly update adds a log entry and revises t
 
 | ID | Milestone | Baseline | Forecast | Status | Note |
 | --- | --- | --- | --- | --- | --- |
-| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | On track | Architecture settled: ADRs 0001–0013 Accepted (0014 Foundry Proposed); spec/ADR conventions unified (PR #3); simulation-interface and security-labeled-traffic specs written. Remaining: AOC-DFO restart is a D1 item |
+| D0 | Foundations aligned | 2026-11-30 | 2026-11-30 | Done | Architecture settled: ADRs 0001–0013 Accepted; spec/ADR conventions unified (PR #3); simulation-interface and security-labeled-traffic specs written. Foundry (ADR 0014, Proposed) moved out of D0 to the D2/D3 backlog (2026-11-24); AOC-DFO restart is a D1 item |
 | D1 | The AI-built enterprise, running | 2027-03-31 | 2027-04-30 | At risk | Aircrew-LangChain Phase 1 merged 2026-11-11 (108 tests pass on main); Phase 2 unblocked; ENSIM audit and ENCAP Phase 2 gate not begun; AOC-DFO Phases 1–4 not started (the near-term schedule risk) |
 | D2 | At scale, over a realistic network | 2027-08-31 | 2027-12-15 | At risk | Simulation interface **decided (ADR 0012) and specced** — HLA transport + C2SIM-shaped JSON envelope; `simulation-interface` spec Draft. Python port **deferred** (GMNS A3 / ADR 0011): MATLAB authoritative; risk shifts to native MATLAB UCI/C2SIM and the component adapters |
 | D3 | AI in the enterprise | 2027-12-15 | 2028-03-31 | At risk | Follows D2 |
@@ -40,7 +40,7 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 - [x] Simulation interface decided and specced (2026-11-16/18): ADR 0012 Accepted; `simulation-interface` spec merged (umbrella PR #5)
 - [x] Spec/ADR conventions unified (2026-11-14): single `.kiro/specs/` home + two-tier ADR scheme, repo-qualified citations (umbrella PR #3)
 - [x] Security-labeled traffic + CDS decided (2026-11-21/22): ADR 0013 Accepted (D1–D7: engine + public US Govt config, lattice-then-ABAC, two-entity review); `security-labeled-traffic` Design approved 2026-11-22
-- [ ] Palantir Foundry integration: ADR 0014 **Proposed**; gated on Developer Edition limits and the shared-ontology reconciliation before a spec
+- [x] ~~Palantir Foundry integration~~ — moved out of D0 (2026-11-24): ADR 0014 stays **Proposed**, gated on Developer Edition limits and the shared-ontology reconciliation before a spec; not a foundations item
 
 ## Active streams
 
@@ -49,7 +49,7 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 | AOC-DFO Phases 1–4 | AOC-DFO | 2026-10-26 to 2026-12-31 | Behind: ~8 of 64 tasks (Phase 0) as of last check; Phases 1–4 not started. **The near-term schedule risk.** |
 | Aircrew-LangChain Phase 2 | Aircrew-LangChain | 2026-11-01 to 2026-12-31 | Unblocked (Phase 1 merged 2026-11-11, 108 tests pass); decision-trace tasks 1–5 land here |
 | Simulation-interface build-out | Umbrella + ENSIM/GMNS/Turnpoint/Aircrew | from 2026-11-18 | Spec Draft; component adapters (ENSIM sim-services, GMNS federate shim, Python adapters) next |
-| Security-labeled-traffic build-out | GMNS + umbrella/AOC-DFO/ENCAP | from 2026-11-22 | Design approved; tasks PR open; GMNS ICAM enforcement + label schema next |
+| Security-labeled-traffic build-out | GMNS + umbrella/AOC-DFO/ENCAP | from 2026-11-22 | Tasks merged 2026-11-24 (PR #10); GMNS ICAM enforcement + label schema next |
 
 ## Log
 
@@ -183,3 +183,18 @@ Forecasts past D1 reflect the three-stream rule at half time, which the baseline
 - **Housekeeping:** this file had lagged the merged state (it predated ADRs 0011–0014 and the new
   specs); refreshed against the repositories' current `main`. Open PRs at this update:
   `security-labeled-traffic` tasks, and a shared-citation-form ADR.
+
+### Review 2026-11-24 — D0 closed
+
+- **D0 marked Done**, ahead of its 2026-11-30 baseline. Foundry (ADR 0014) moved out of D0: it was
+  added 2026-11-21, after the baseline, and is gated on two external unknowns, so it should not hold
+  the foundations milestone open. It stays Proposed in the D2/D3 backlog.
+- **Review queue cleared to the three-result rule:** `security-labeled-traffic` tasks (PR #10)
+  reviewed and merged 2026-11-24 — every requirement R1–R14 and design component C1–C11 is
+  cited. Open gap for the GMNS component spec: R6.1's producer side (join-label derived outputs)
+  has no explicit task.
+- The shared-citation-form ADR (PR #1) is a live ontology decision, not superseded by the
+  conventions work (PR #3 covered how ADRs are cited, not how claims cite sources); it collided with
+  the merged ADR 0011 and is renumbered to **AKS ADR 0015** (PR #1), still Proposed.
+- **Next:** AOC-DFO Phase 1 — the near-term schedule risk (~8 of 64 tasks; Phases 1–4 window ends
+  2026-12-31).
